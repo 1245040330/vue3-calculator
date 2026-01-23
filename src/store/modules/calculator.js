@@ -1,0 +1,37 @@
+//计算器
+import { defineStore } from 'pinia'
+import { useStorage } from '@vueuse/core'
+
+export const useCalculatorStore = defineStore('calculator', {
+    state: () => ({
+        data: {
+            currentText: '0',
+            calculationText: "",
+            activeMenu: useStorage('calculator0-active-menu', 'standard') 
+        }
+
+    }),
+    getters: {
+        currentText() {
+            return this.data.currentText;
+        },
+        calculationText() {
+            return this.data.calculationText;
+        },
+        activeMenu() {
+            return this.data.activeMenu
+        }
+
+    },
+    actions: {
+        setCurrentText(value) {
+            this.data.currentText = value
+        },
+        setCalculationText(value) {
+            this.data.calculationText = value;
+        },
+        setActiveMenu(value) {
+            this.data.activeMenu = value
+        }
+    },
+})

@@ -1,0 +1,27 @@
+.DS_Store
+node_modules
+/dist
+package-lock.json
+ignorecase = false
+
+# local env files
+.env.local
+.env.*.local
+.env.staging
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.vite
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+git-push.bat
