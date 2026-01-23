@@ -122,12 +122,16 @@ export const keynoardConfig = {
         keyboardList: [
             {
                 latex: "2^{nd}",
+                key: '2nd',
+                isActiveButton: true
             },
             {
                 latex: '\\pi',
+                key: "ConstantPI"
             },
             {
                 label: "e",
+                key: 'ConstantE'
             },
             {
                 label: "C",
@@ -148,35 +152,49 @@ export const keynoardConfig = {
                     {}
                 ),
             },
-            {
-                latex: "^{1}\\!/\\!_{x}",
-                key: 'Reciprocal'
-            },
+
             {
                 latex: "x^{2} ",
                 key: 'Sqr'
             },
             {
+                latex: "^{1}\\!/\\!_{x}",
+                key: 'Reciprocal'
+            },
+            {
                 latex: "\\left |x\\right|",
+                key: "Abs",
             },
             {
                 label: "exp",
+                key: "Exp",
+                keyboard: 'e'
             },
             {
                 label: "mod",
+                key: "Mod"
             },
             {
                 latex: `\\sqrt[2]{x} `,
                 key: 'Sqrt',
+                '2nd': {
+                    latex: "\\sqrt[3]{x} ",
+                    key: 'Cuberoot'
+                },
             },
             {
                 label: "(",
+                key: "(",
+                keyboard: 'Digit9',
             },
             {
                 label: ")",
+                key: ")",
+                keyboard: 'Digit0',
             },
             {
                 latex: `n!`,
+                key: 'Fact'
             },
             {
                 latex: `{\\div}`,
@@ -185,6 +203,12 @@ export const keynoardConfig = {
             },
             {
                 latex: "x^{y} ",
+                key: "^",
+                keyboard: 'Digit6',
+                '2nd': {
+                    latex: "\\sqrt[y]{x} ",
+                    key: 'Yroot'
+                },
             },
             {
                 label: "7",
@@ -205,6 +229,12 @@ export const keynoardConfig = {
             },
             {
                 latex: "10^{x} ",
+                key: "10^",
+                '2nd': {
+                    latex: "2^{x}",
+                    key: '2^{x}'
+
+                },
             },
             {
                 label: "4",
@@ -224,6 +254,12 @@ export const keynoardConfig = {
             },
             {
                 latex: "\\log",
+                key: 'l',
+                keyboard: 'KeyL',
+                '2nd': {
+                    latex: "\\log_{y}{x}",
+                    key: 'log_{y}{x}'
+                },
             },
             {
                 label: "1",
@@ -243,6 +279,12 @@ export const keynoardConfig = {
             },
             {
                 latex: "\\ln",
+                keyboard: 'KeyN',
+                key: 'n',
+                '2nd': {
+                    latex: "e^{x}",
+                    key: 'e^{x}'
+                },
             },
             {
                 latex: "^{+}\\!/\\!_{-}",
@@ -280,28 +322,110 @@ export const keynoardConfig = {
                 columnNumber: 4,
                 keyboardList: [
                     {
-                        latex: "2^nd",
+                        latex: "2^{nd}",
+                        isActiveButton: true,
+                        key: "2nd"
                     },
                     {
-                        label: "sin",
+                        latex: "sin",
+                        key: "Sin",
+                        '2nd': {
+                            latex: 'sin^{-1}',
+                            key: "Asin"
+                        },
+                        Hyp: {
+                            latex: 'sinh',
+                            key: "Sinh"
+                        },
+                        '2ndHyp':{
+                            latex: 'sinh^{-1}',
+                            key: "Asinh"
+                        },
                     },
                     {
-                        label: "cos",
+                        latex: "cos",
+                        key: "Cos",
+                        '2nd': {
+                            latex: 'cos^{-1}',
+                            key: "Acos"
+                        },
+                        Hyp: {
+                            latex: 'cosh',
+                            key: "Cosh"
+                        },
+                        '2ndHyp':{
+                            latex: 'cosh^{-1}',
+                            key: "Acosh"
+                        },
                     },
                     {
-                        label: "tan",
-                    },
-                      {
-                        label: "htp",
+                        latex: "tan",
+                        key: "Tan",
+                        '2nd': {
+                            latex: 'tan^{-1}',
+                            key: "Atan"
+                        },
+                        Hyp: {
+                            latex: 'tanh',
+                            key: "Tanh"
+                        },
+                        '2ndHyp':{
+                            latex: 'tanh^{-1}',
+                            key: "Atanh"
+                        },
                     },
                     {
-                        label: "sec",
+                        label: "hyp",
+                        isActiveButton: true,
+                        key: "Hyp"
                     },
                     {
-                        label: "csc",
+                        latex: "sec",
+                        key: "Sec",
+                        '2nd': {
+                            latex: 'sec^{-1}',
+                            key: "Asec"
+                        },
+                        Hyp: {
+                            latex: 'sech',
+                            key: "Sech"
+                        },
+                        '2ndHyp':{
+                            latex: 'sech^{-1}',
+                            key: "Asech"
+                        },
                     },
-                     {
-                        label: "cot",
+                    {
+                        latex: "csc",
+                        key: "Csc",
+                        '2nd': {
+                            latex: 'csc^{-1}',
+                            key: "Acsc"
+                        },
+                        Hyp: {
+                            latex: 'csch',
+                            key: "Csch"
+                        },
+                        '2ndHyp':{
+                            latex: 'csch^{-1}',
+                            key: "Acsch"
+                        },
+                    },
+                    {
+                        latex: "cot",
+                        key: "Cot",
+                        '2nd': {
+                            latex: 'cot^{-1}',
+                            key: "Acot"
+                        },
+                        Hyp: {
+                            latex: 'coth',
+                            key: "Coth"
+                        },
+                        '2ndHyp':{
+                            latex: 'coth^{-1}',
+                            key: "Acoth"
+                        },
                     },
                 ]
             },
@@ -309,28 +433,34 @@ export const keynoardConfig = {
                 name: 'Function',
                 key: 'function',
                 latex: '\\int',
-                  keyboardList: [
+                rowNumber: 2,
+                columnNumber: 3,
+                keyboardList: [
                     {
-                        latex: "2^nd",
-                    },
-                    {
-                        label: "sin",
-                    },
-                    {
-                        label: "cos",
+                        latex: "\\begin{vmatrix} x \\end{vmatrix}",
+                        key:"Abs"
                     },
                     {
-                        label: "tan",
+                        latex: "\\left \\lfloor x \\right \\rfloor ",
+                        key:"Floor"
                     },
                     {
-                        label: "sec",
+                        latex: "\\left \\lceil x \\right \\rceil ",
+                        key:"Ceil"
                     },
                     {
-                        label: "csc",
+                        label: "rand",
+                        key:'Rand'
                     },
-                     {
-                        label: "cot",
+                    {
+                        latex: "\\longrightarrow dms",
+                        key:"ToDms"
                     },
+                    {
+                        latex: "\\longrightarrow deg",
+                        key:"ToDeg"
+                    },
+
                 ]
             },
         ],

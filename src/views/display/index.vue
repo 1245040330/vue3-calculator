@@ -55,7 +55,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-
+  user-select: text;
   .calculation-text {
     font-size: 16px;
     text-align: right;

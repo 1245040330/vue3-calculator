@@ -2,10 +2,7 @@
   <div class="keyboard-button-box" :style="{
     '--backgroundColor': backgroundColor,
     '--hoverBackgroundColor': hoverBackgroundColor
-  }"
-  :class="[isHover?'hover': '']"
-  
-  >
+  }" :class="[isHover ? 'hover' : '', isActive ? 'active' : '']">
     <slot></slot>
   </div>
 </template>
@@ -13,7 +10,11 @@
 
 
 const prpos = defineProps({
-  isHover:{
+  isHover: {
+    type: Boolean,
+    default: false
+  },
+  isActive: {
     type: Boolean,
     default: false
   },
@@ -36,9 +37,14 @@ const prpos = defineProps({
   display: flex;
   align-items: center;
   justify-content: center;
- 
-  &:hover ,&.hover {
+
+  &:hover,
+  &.hover {
     background-color: var(--hoverBackgroundColor);
+  }
+
+  &.active {
+    background-color: var(--active-keyboard-color);
   }
 }
 </style>

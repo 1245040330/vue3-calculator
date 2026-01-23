@@ -1,19 +1,22 @@
 <template>
-    <div class="custom-toolbar">
+    <div class="custom-toolbar" ref="toolbarRef">
         <div class="item-box" v-for="(item, index) in customToolbar" :key="item.key || item.name" ref="itemsRef"
             @click="handleClick(item, index)">
             <div class="icon-box">
                 <component v-if="item.iconComponent" :is="item.iconComponent"></component>
-                <span v-if="item.latex" v-html="renderLabel(item)"></span>
+                <span v-if="item.latex" v-html="renderKeyboardLabel(item)"></span>
             </div>
 
             {{ item.name }}
         </div>
-        <div class="button-list" :style="popoverStyle" style="position: fixed; " >
-            <KeyboardButton v-for="(itemKeyboard, itemKeyboardIndex) in acitveItemKeybord.keyboardList" v-if="acitveItemKeybord.keyboardList && acitveItemKeybord.keyboardList.length>0" :key="itemKeyboardIndex">
-                <component v-if="itemKeyboard.component" :is="itemKeyboard.component"> </component>
-
-                <div v-else v-html="renderLabel(itemKeyboard)"></div>
+        <div class="button-list" :style="popoverStyle" style="position: fixed; " v-if="showPopover">
+            <KeyboardButton v-for="(itemKeyboard, itemKeyboardIndex) in acitveItemKeybord.keyboardList"
+                v-if="acitveItemKeybord.keyboardList && acitveItemKeybord.keyboardList.length > 0"
+                :is-active="activeKeyboardObject[itemKeyboard.key]" :key="itemKeyboardIndex"
+                @click="handleClickKeyboard(itemKeyboard, index)">
+                <component v-if="renderComponents(itemKeyboard, activeKeyboardObject)"
+                    :is="renderComponents(itemKeyboard, activeKeyboardObject)"> </component>
+                <div v-else v-html="renderKeyboardLabel(itemKeyboard, activeKeyboardObject)"></div>
             </KeyboardButton>
         </div>
 
@@ -22,33 +25,78 @@
 </template>
 <script setup>
 import KeyboardButton from "./keyboardButton.vue";
-import { useTemplateRef, ref } from 'vue';
-import { useElementBounding } from '@vueuse/core'
-import { renderLabel } from '@/utils/mathUtil'
+import { useTemplateRef, ref, nextTick } from 'vue';
+import { useElementBounding, onClickOutside } from '@vueuse/core'
+import { renderKeyboardLabel, renderComponents, getActiveKeyboardList } from '@/utils/mathUtil'
+const emits = defineEmits(['handle-key-press'])
 const props = defineProps({
     customToolbar: {
         type: Array,
         default: () => []
+    },
+    popoverHeight: {
+        type: String,
+        default: '100px'
     }
 })
 const itemsRef = useTemplateRef('itemsRef');
+const toolbarRef = useTemplateRef('toolbarRef');
+
+const activeKeyboardObject = ref({})
 
 const popoverStyle = ref({
     top: '0px',
 });
-const acitveItemKeybord =ref({})
+const showPopover = ref(false)
+const acitveItemKeybord = ref({})
+//点击元素以外的盒子
+onClickOutside(toolbarRef, event => {
+    showPopover.value = false;
+})
 const handleClick = (item, index) => {
-    const { x, y, top, right, bottom, left, width, height }
-        = useElementBounding(itemsRef.value[index])
-    popoverStyle.value = {
-        left: 0 + 'px',
-        top: (y.value + height.value) + 'px',
-        '--row-number': acitveItemKeybord.value.rowNumber || 4,
-        '--column-number': acitveItemKeybord.value.columnNumber || 4,
-    }
-    console.log(popoverStyle.value);
+    showPopover.value = false;
     acitveItemKeybord.value = item
-    console.log(itemsRef.value[index], x.value, y.value, height.value);
+    nextTick(() => {
+        acitveItemKeybord.value.keyboardList.forEach(keyboardItem => {
+            if (keyboardItem.isActiveButton) {
+                activeKeyboardObject.value[keyboardItem.key || keyboardItem.label] = false
+            }
+
+        });
+        const { x, y, top, right, bottom, left, width, height }
+            = useElementBounding(itemsRef.value[index])
+        popoverStyle.value = {
+            left: 0 + 'px',
+            top: (y.value + height.value) + 'px',
+            '--row-number': acitveItemKeybord.value.rowNumber || 4,
+            '--column-number': acitveItemKeybord.value.columnNumber || 4,
+            height: props.popoverHeight,
+        }
+        console.log(popoverStyle.value);
+
+        console.log(itemsRef.value[index], x.value, y.value, height.value);
+        showPopover.value = true;
+    })
+
+}
+const handleClickKeyboard = (item, index) => {
+    let { label, key: keyValue } = item;
+    Object.keys(activeKeyboardObject.value).forEach(activeKeyboardKey => {
+        if (activeKeyboardObject.value[activeKeyboardKey] && item[activeKeyboardKey]) {
+            label = item[activeKeyboardKey].label;
+            keyValue = item[activeKeyboardKey].key;
+        }
+    })
+    let selectKeyboardList = getActiveKeyboardList(activeKeyboardObject.value);
+    if (item[selectKeyboardList.join("")]) {
+        label = item[selectKeyboardList.join("")].label
+        keyValue = item[selectKeyboardList.join("")].key
+    }
+    const value = keyValue || label;
+    if (Object.keys(activeKeyboardObject.value).includes(value)) {
+        activeKeyboardObject.value[value] = !activeKeyboardObject.value[value]
+    }
+    emits("handle-key-press", { ...{ label, key: value }, prefix: 'custom-toolbar-' + acitveItemKeybord.value.key })
 }
 </script>
 <style lang="scss" scoped>
@@ -58,11 +106,18 @@ const handleClick = (item, index) => {
     display: flex;
     gap: 8px;
     font-size: 12px;
+    padding: 4px 0;
 
     .item-box {
         display: flex;
         align-items: center;
         gap: 16px;
+        padding: 0 8px;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: #33313B;
+        }
 
         .icon-box {
             display: flex;
@@ -75,7 +130,7 @@ const handleClick = (item, index) => {
     .button-list {
         background-color: #2D2A32;
         border-radius: 8px;
-        width: 80vw;
+        width: 90vw;
         padding: 4px;
         display: grid;
         z-index: 8;
