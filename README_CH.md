@@ -4,7 +4,7 @@
 
 ## 🌐 在线体验
 
-https://1245040330.github.io/vite-calculator/
+https://1245040330.github.io/vue3-calculator/
 
 🌐 **[中文文档](README_CH.md)** | **[English Documentation](README.md)**
 
@@ -34,7 +34,7 @@ https://1245040330.github.io/vite-calculator/
 ## 📦 项目结构
 
 ```
-vite-calculator/
+vue3-calculator/
 ├── src/
 │   ├── components/          # 通用组件
 │   ├── views/

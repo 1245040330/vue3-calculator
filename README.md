@@ -4,7 +4,7 @@ A modern scientific calculator application built with Vue3 + Vite + MathJS, feat
 
 ## 🌐 Demo
 
-https://1245040330.github.io/vite-calculator/
+https://1245040330.github.io/vue3-calculator/
 
 🌐 **[中文文档](README_CH.md)** | **[English Documentation](README.md)**
 
@@ -34,7 +34,7 @@ https://1245040330.github.io/vite-calculator/
 ## 📦 Project Structure
 
 ```
-vite-calculator/
+vue3-calculator/
 ├── src/
 │   ├── components/          # Common components
 │   ├── views/
