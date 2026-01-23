@@ -1,6 +1,6 @@
 <template>
-    <div class="more-box">
-        <SvgIcon class="svg-box" name="more" @click="emits('more-click', false)" :size="14" color="#fff"
+    <div class="more-box" ref="moreRef">
+        <SvgIcon class="svg-box" name="more" @click="emits('more-click', false)" :size="14" color="var(--text-color)"
             style="padding: 10px 12px" />
         <div class="menu-list">
             <div class="sub-menu" v-for="item in moreList" :key="item.name">
@@ -11,9 +11,9 @@
         </div>
         <div class="setting-box">
 
-            <div class="button">
-                <SvgIcon class="svg-box" name="setting" :size="14" color="#fff" style="padding: 2px 8px" />
-                <div>设置</div>
+            <div class="button" @click="next()">
+                <SvgIcon class="svg-box" name="setting" :size="14" color="var(--text-color)" style="padding: 2px 8px" />
+                <div>设置 {{ calculatorStore.version }} {{ state }}</div>
             </div>
 
         </div>
@@ -21,12 +21,22 @@
     </div>
 </template>
 <script setup>
-import { defineModel } from 'vue'
-
-
+import { defineModel, watch,useTemplateRef } from 'vue'
+import { useCalculatorStore } from '@/store'
+const calculatorStore = useCalculatorStore()
+import { useColorMode, useCycleList, onClickOutside } from '@vueuse/core'
 
 const emits = defineEmits(['more-click'])
 const activeMenu = defineModel('activeMenu')
+const mode = useColorMode({
+    emitAuto: true,
+})
+const moreRef =useTemplateRef('moreRef')
+
+const { state, next } = useCycleList(['dark', 'light', 'auto'], { initialValue: mode })
+watch(state, (newVal) => {
+    mode.value = newVal
+})
 const moreList = [
     {
         name: '计算器',
@@ -113,6 +123,12 @@ const moreList = [
     }
 ]
 
+
+//点击元素以外的盒子
+onClickOutside(moreRef, event => {
+    emits('more-click', false)
+})
+
 /**
  *  动态获取class
  * @param item 
@@ -125,6 +141,9 @@ const getMenuItemClass = (item) => {
  * @param item 
  */
 const handleClick = (item) => {
+    if(item.disabled){
+        return;
+    }
     activeMenu.value = item.key || item.name;
     emits('more-click', false)
 }
@@ -132,7 +151,7 @@ const handleClick = (item) => {
 
 <style lang="scss" scoped>
 .more-box {
-    background-color: #2D2A32;
+    background-color: var(--btn-bg);
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     padding: 8px 0;
@@ -160,10 +179,7 @@ const handleClick = (item) => {
 
             &:hover,
             &.active {
-                background-color: #36333B;
-
-
-
+                background-color: var(--bg-1-color)
             }
 
             &.active {
@@ -174,8 +190,8 @@ const handleClick = (item) => {
                     top: 0;
                     width: 3px;
                     height: 40%;
-                    transform: translate(0%, 65%);
-                    background-color: #fff;
+                    transform: translate(0%, 75%);
+                    background-color: var(--bg-3-color);
                     border-radius: 8px;
                 }
             }
@@ -183,7 +199,7 @@ const handleClick = (item) => {
     }
 
     .setting-box {
-        border-top: 1px solid #36333B;
+        border-top: 1px solid var(--line-color);
         height: 56px;
         padding: 12px 4px 4px 4px;
 
@@ -194,7 +210,7 @@ const handleClick = (item) => {
             border-radius: 4px;
 
             &:hover {
-                background-color: #36333B;
+                background-color: var(--bg-1-color);
             }
         }
     }

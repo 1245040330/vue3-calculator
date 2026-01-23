@@ -57,6 +57,9 @@ watch(() => currentText.value, (newVal, oldVal) => {
 const activeKeynoard = computed(() => {
   return keynoardConfig[calculatorStore.activeMenu] || {}
 })
+watch(() => calculatorStore.activeMenu, () => {
+  init()
+})
 
 
 const magicKeys = useMagicKeys();
@@ -92,19 +95,21 @@ watchEffect(() => {
 
 onMounted(() => {
   document.addEventListener('keydown', handleKeyPress);
-  activeKeynoard.value.keyboardList.forEach(keyboardItem => {
-    if (keyboardItem.isActiveButton) {
-      activeKeyboardObject.value[keyboardItem.key || keyboardItem.label] = false
-    }
-
-  });
+  init()
 
 });
 onBeforeUnmount(() => {
   document.removeEventListener('keydown', handleKeyPress)
 })
 
+const init = () => {
+  activeKeynoard.value.keyboardList.forEach(keyboardItem => {
+    if (keyboardItem.isActiveButton) {
+      activeKeyboardObject.value[keyboardItem.key || keyboardItem.label] = false
+    }
 
+  });
+}
 
 
 /**
@@ -112,6 +117,8 @@ onBeforeUnmount(() => {
  * @param key 
  */
 const handleKeyPress = (key) => {
+  console.log(key);
+
   let { label, key: keyValue } = key;
   Object.keys(activeKeyboardObject.value).forEach(activeKeyboardKey => {
     if (activeKeyboardObject.value[activeKeyboardKey] && key[activeKeyboardKey]) {

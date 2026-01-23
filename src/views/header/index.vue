@@ -1,6 +1,6 @@
 <template>
   <div class="header-box">
-    <SvgIcon @click="emits('more-click',true)" class="svg-box" name="more" :size="14" color="#fff"
+    <SvgIcon @click="emits('more-click',true)" class="svg-box" name="more" :size="14" color="var(--text-color)"
       style="padding: 10px 12px" />
     {{ name }}
   </div>
@@ -26,7 +26,7 @@ const emits = defineEmits(['more-click'])
     border-radius: 4px;
 
     &:hover {
-      background-color: #2e2b36;
+      background-color: var(--bg-2-color);
     }
   }
 }

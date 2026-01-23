@@ -55,6 +55,10 @@ onClickOutside(toolbarRef, event => {
 })
 const handleClick = (item, index) => {
     showPopover.value = false;
+    if(item.key== acitveItemKeybord.value.key){
+        acitveItemKeybord.value = {}
+        return;
+    }
     acitveItemKeybord.value = item
     nextTick(() => {
         acitveItemKeybord.value.keyboardList.forEach(keyboardItem => {
@@ -101,7 +105,7 @@ const handleClickKeyboard = (item, index) => {
 </script>
 <style lang="scss" scoped>
 .custom-toolbar {
-    border-top: 1px solid #36333B;
+    border-top: 1px solid var(--line-color);
     overflow: hidden;
     display: flex;
     gap: 8px;
@@ -116,7 +120,7 @@ const handleClickKeyboard = (item, index) => {
         border-radius: 4px;
 
         &:hover {
-            background-color: #33313B;
+            background-color: var(--bg-2-color);
         }
 
         .icon-box {
@@ -128,7 +132,7 @@ const handleClickKeyboard = (item, index) => {
     }
 
     .button-list {
-        background-color: #2D2A32;
+        background-color: var(--popover-bg-color);
         border-radius: 8px;
         width: 90vw;
         padding: 4px;

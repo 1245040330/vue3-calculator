@@ -1,5 +1,5 @@
 <template>
-  <div class="main-box bg-white text-gray-900 dark:bg-bg-dark dark:text-white">
+  <div class="main-box">
     <Header @more-click="changeShowMenu" :name="activeMenu"></Header>
     <Display style="flex:1"></Display>
     <MemoryCapability></MemoryCapability>
@@ -39,6 +39,8 @@ const changeShowMenu = (value) => {
   display: flex;
   flex-direction: column;
   position: relative;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 
   .more-box {
     position: absolute;

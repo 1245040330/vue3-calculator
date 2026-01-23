@@ -47,7 +47,7 @@ onMounted(() => {
     border-radius: 4px;
 
     &:hover {
-      background-color: #33313B;
+      background-color: var(--bg-2-color);
     }
 
 

@@ -4,15 +4,11 @@
 </template>
 <script setup>
 import Main from '@/views/main.vue'
+import { useColorMode } from '@vueuse/core'
+const mode = useColorMode({
+    emitAuto: true,
+})
 
-const theme = localStorage.getItem('theme') ?? 'auto'
-
-const isDark =
-  theme === 'dark' ||
-  (theme === 'auto' &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches)
-
-document.documentElement.classList.toggle('dark', isDark)
 </script>
 
 

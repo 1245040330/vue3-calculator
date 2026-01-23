@@ -24,7 +24,7 @@ export const keynoardConfig = {
                     {
                         size: "16px",
                         name: "back",
-                        color: "#fff",
+                        color: "var(--text-color)",
                         style: "padding: 10px 12px",
                     },
                     {}
@@ -146,7 +146,7 @@ export const keynoardConfig = {
                     {
                         size: "16px",
                         name: "back",
-                        color: "#fff",
+                        color: "var(--text-color)",
                         style: "padding: 10px 12px",
                     },
                     {}
@@ -313,7 +313,7 @@ export const keynoardConfig = {
                     {
                         size: "18px",
                         name: "trigonometry",
-                        color: "#fff",
+                        color: "var(--text-color)",
                         style: "padding: 4px",
                     },
                     {}

@@ -20,11 +20,11 @@ const prpos = defineProps({
   },
   backgroundColor: {
     type: String,
-    default: '#33313B'
+    default: 'var(--btn-bg)'
   },
   hoverBackgroundColor: {
     type: String,
-    default: '#3C3942'
+    default: 'var(--btn-hover)'
   }
 })
 

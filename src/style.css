@@ -11,6 +11,30 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
+  /* 亮色主题变量 */
+  --bg-color:#F3F3F3;
+  --text-color: #000000;
+  --btn-bg:#fff;
+  --btn-hover:#FCFCFC;
+  --bg-1-color:#F1F1F5;
+  --bg-2-color:#EAE9F0;
+  --line-color:#E6E4EA;
+  --popover-bg-color:#F7F6FA;
+  --bg-3-color:#9A9A9A;
+}
+html.dark {
+  /* 深色主题变量 */
+  --bg-color: #211e29;
+  --text-color: #ffffff;
+  --btn-bg: #33313B;
+  --btn-hover:#3C3942;
+  --bg-1-color:#36333B;
+  --bg-2-color:#2E2B36;
+  --line-color:#33313B;
+  --popover-bg-color:#2D2A32;
+  --bg-3-color:#AEAEAE;
 }
 
 a {
@@ -42,4 +66,28 @@ body {
 .disabled {
   opacity: .45;
   cursor: not-allowed;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  transition: all 0.2s ease-out;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  border: 1px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  border: 1px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: inherit;
 }
