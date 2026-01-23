@@ -9,7 +9,12 @@ https://1245040330.github.io/vue3-calculator/
 🌐 **[中文文档](README_CH.md)** | **[English Documentation](README.md)**
 
 ## 🧩 screenshot
+
+### standard
 ![alt text](src/assets/images/demo.png)
+
+### scientific
+![alt text](src/assets/images/demo1.png)
 
 ## ✨ Features
 
@@ -25,6 +30,7 @@ https://1245040330.github.io/vue3-calculator/
 
 - **Frontend Framework**: Vue 3 (Composition API)
 - **Build Tool**: Vite
+- **State Management**: Pinia
 - **Mathematical Computation**: MathJS
 - **Mathematical Notation Rendering**: KaTeX
 - **Mobile UI**: Vant
@@ -36,10 +42,17 @@ https://1245040330.github.io/vue3-calculator/
 ```
 vue3-calculator/
 ├── src/
-│   ├── components/          # Common components
-│   ├── views/
-│   │   └── keyboard/        # Calculator keyboard components
 │   ├── assets/              # Static assets
+│   ├── components/          # Common components
+│   ├── config/              # Configuration files
+│   ├── store/               # State management (Pinia)
+│   ├── utils/               # Utility functions
+│   ├── views/               # Page components
+│   │   ├── display/         # Display screen components
+│   │   ├── header/          # Header components
+│   │   ├── keyboard/        # Keyboard components
+│   │   ├── memoryCapability/# Memory capability components
+│   │   └── more/            # More features components
 │   └── main.js              # Application entry point
 ├── public/                  # Public resources
 └── package.json

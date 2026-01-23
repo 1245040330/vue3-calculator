@@ -9,7 +9,12 @@ https://1245040330.github.io/vue3-calculator/
 🌐 **[中文文档](README_CH.md)** | **[English Documentation](README.md)**
 
 ## 🧩 截图
+
+### 标准计算器
 ![alt text](src/assets/images/demo.png)
+
+### 科学计算器
+![alt text](src/assets/images/demo1.png)
 
 ## ✨ 功能特性
 
@@ -25,6 +30,7 @@ https://1245040330.github.io/vue3-calculator/
 
 - **前端框架**：Vue 3 (Composition API)
 - **构建工具**：Vite
+- **状态管理**：Pinia
 - **数学计算**：MathJS
 - **数学公式渲染**：KaTeX
 - **移动端 UI**：Vant
@@ -36,10 +42,17 @@ https://1245040330.github.io/vue3-calculator/
 ```
 vue3-calculator/
 ├── src/
-│   ├── components/          # 通用组件
-│   ├── views/
-│   │   └── keyboard/        # 计算器键盘组件
 │   ├── assets/              # 静态资源
+│   ├── components/          # 通用组件
+│   ├── config/              # 配置文件
+│   ├── store/               # 状态管理 (Pinia)
+│   ├── utils/               # 工具函数
+│   ├── views/               # 页面组件
+│   │   ├── display/         # 显示屏组件
+│   │   ├── header/          # 头部组件
+│   │   ├── keyboard/        # 键盘组件
+│   │   ├── memoryCapability/# 存储功能组件
+│   │   └── more/            # 更多功能组件
 │   └── main.js              # 应用入口
 ├── public/                  # 公共资源
 └── package.json
