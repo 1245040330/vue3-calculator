@@ -21,7 +21,7 @@
     </div>
 </template>
 <script setup>
-import { defineModel, watch,useTemplateRef } from 'vue'
+import { watch,useTemplateRef } from 'vue'
 import { useCalculatorStore } from '@/store'
 const calculatorStore = useCalculatorStore()
 import { useColorMode, useCycleList, onClickOutside } from '@vueuse/core'

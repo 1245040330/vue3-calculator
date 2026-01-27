@@ -12,7 +12,7 @@
     </div>
 </template>
 <script setup>
-import { ref, computed, defineModel, useTemplateRef, nextTick } from 'vue'
+import { ref, computed, useTemplateRef, nextTick } from 'vue'
 import { useElementBounding, onClickOutside } from '@vueuse/core'
 const props = defineProps({
     options: {
