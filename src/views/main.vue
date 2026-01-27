@@ -1,19 +1,26 @@
 <template>
   <div class="main-box">
     <Header @more-click="changeShowMenu" :name="activeMenu"></Header>
-    <Display style="flex:1"></Display>
-    <MemoryCapability></MemoryCapability>
-    <Keyboard style="flex:4"></Keyboard>
+    <template v-if="activeMenu == 'dateCalculation'">
+      <DateCalculation style="flex:1;height: 1px;"></DateCalculation>
+    </template>
+    <template v-else>
+      <Display style="flex:1;height: 1px;"></Display>
+      <MemoryCapability></MemoryCapability>
+      <Keyboard style="flex:4;height: 1px;"></Keyboard>
+    </template>
+
     <More class="more-box" v-model:active-menu="activeMenu" v-if="showMenu" @more-click="changeShowMenu"></More>
   </div>
 </template>
 <script setup>
-import { ref,computed } from 'vue'
+import { ref, computed } from 'vue'
 import Header from "@/views/header/index.vue";
 import Display from "@/views/display/index.vue"
 import MemoryCapability from "@/views/memoryCapability/index.vue"
 import Keyboard from "@/views/keyboard/index.vue"
 import More from "@/views/more/index.vue"
+import DateCalculation from "@/views/dateCalculation/index.vue"
 import { useCalculatorStore } from '@/store'
 const calculatorStore = useCalculatorStore()
 const showMenu = ref(false)

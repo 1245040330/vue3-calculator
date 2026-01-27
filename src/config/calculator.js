@@ -337,7 +337,7 @@ export const keynoardConfig = {
                             latex: 'sinh',
                             key: "Sinh"
                         },
-                        '2ndHyp':{
+                        '2ndHyp': {
                             latex: 'sinh^{-1}',
                             key: "Asinh"
                         },
@@ -353,7 +353,7 @@ export const keynoardConfig = {
                             latex: 'cosh',
                             key: "Cosh"
                         },
-                        '2ndHyp':{
+                        '2ndHyp': {
                             latex: 'cosh^{-1}',
                             key: "Acosh"
                         },
@@ -369,7 +369,7 @@ export const keynoardConfig = {
                             latex: 'tanh',
                             key: "Tanh"
                         },
-                        '2ndHyp':{
+                        '2ndHyp': {
                             latex: 'tanh^{-1}',
                             key: "Atanh"
                         },
@@ -390,7 +390,7 @@ export const keynoardConfig = {
                             latex: 'sech',
                             key: "Sech"
                         },
-                        '2ndHyp':{
+                        '2ndHyp': {
                             latex: 'sech^{-1}',
                             key: "Asech"
                         },
@@ -406,7 +406,7 @@ export const keynoardConfig = {
                             latex: 'csch',
                             key: "Csch"
                         },
-                        '2ndHyp':{
+                        '2ndHyp': {
                             latex: 'csch^{-1}',
                             key: "Acsch"
                         },
@@ -422,7 +422,7 @@ export const keynoardConfig = {
                             latex: 'coth',
                             key: "Coth"
                         },
-                        '2ndHyp':{
+                        '2ndHyp': {
                             latex: 'coth^{-1}',
                             key: "Acoth"
                         },
@@ -438,27 +438,27 @@ export const keynoardConfig = {
                 keyboardList: [
                     {
                         latex: "\\begin{vmatrix} x \\end{vmatrix}",
-                        key:"Abs"
+                        key: "Abs"
                     },
                     {
                         latex: "\\left \\lfloor x \\right \\rfloor ",
-                        key:"Floor"
+                        key: "Floor"
                     },
                     {
                         latex: "\\left \\lceil x \\right \\rceil ",
-                        key:"Ceil"
+                        key: "Ceil"
                     },
                     {
                         label: "rand",
-                        key:'Rand'
+                        key: 'Rand'
                     },
                     {
                         latex: "\\longrightarrow dms",
-                        key:"ToDms"
+                        key: "ToDms"
                     },
                     {
                         latex: "\\longrightarrow deg",
-                        key:"ToDeg"
+                        key: "ToDeg"
                     },
 
                 ]
@@ -466,5 +466,17 @@ export const keynoardConfig = {
         ],
         rowNumber: 7,
         columnNumber: 5,
+    },
+    dateCalculation: {
+        keyboardList: [
+            {
+                label: "Difference between dates",
+                key: "DiffDates"
+            },
+            {
+                label: "Add or subtract days",
+                key: "AddSubDays"
+            },
+        ]
     },
 }
