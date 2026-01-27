@@ -1,6 +1,7 @@
 <template>
   <div class="keyboard-box"
     :style="{ '--row-number': rowNumber, '--column-number': columnNumber, '--active-keyboard-color': '#9F9FA0' }">
+    {{ isSupported }}
     <CustomToolbar class="custom-toolbar-box" v-if="customToolbar && customToolbar.length > 0"
       :custom-toolbar="customToolbar" @handle-key-press="handleKeyPress"></CustomToolbar>
     <div class="keyboard-list">
@@ -23,12 +24,16 @@ import CustomToolbar from "./customToolbar.vue";
 import { onMounted, onBeforeUnmount, computed, h, watchEffect, ref, watch } from "vue";
 import {
   useMagicKeys,
+  useVibrate,
 } from '@vueuse/core'
+import { useSound } from '@vueuse/sound'
 import { useCalculatorStore, } from '@/store'
 import { operatorList, renderKeyboardLabel, renderComponents, backspace, inputDot, evaluate, generateCalculationText, clearEntry, clear, negate, percent, enter, reciprocal, sqr, sqrt, abs, joinOperation, unaryOperation, random, toDMMSS, fromDMMSS } from '@/utils/mathUtil'
 import { keynoardConfig } from '@/config/calculator'
+import popDown from '@/assets/sounds/pop-down.mp3'
+const activeSound = useSound(popDown, { volume: 0.25 })
 const calculatorStore = useCalculatorStore()
-
+const { vibrate: startVibrate, isSupported: vibrateIsSupported } = useVibrate({ pattern: [200] })
 const calculationText = computed({
   get: () => {
     return calculatorStore.calculationText
@@ -117,6 +122,10 @@ const init = () => {
  * @param key 
  */
 const handleKeyPress = (key) => {
+  activeSound.play();
+  if (vibrateIsSupported.value) {
+    startVibrate()
+  }
   console.log(key);
 
   let { label, key: keyValue } = key;
