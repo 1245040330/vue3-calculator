@@ -1,20 +1,26 @@
 <template>
   <div class="keyboard-button-box" :style="{
     '--backgroundColor': backgroundColor,
-    '--hoverBackgroundColor': hoverBackgroundColor
-  }" :class="[isHover ? 'hover' : '', isActive ? 'active' : '']">
+    '--hoverBackgroundColor': hoverBackgroundColor,
+    '--activeBackgroundColor': activeKeyboardColor
+  }"
+    :class="[props.isHover ? 'hover' : '', props.isActive ? 'active' : '', (props.showBeforeBorder && props.isActive) ? 'show-before-border' : '']">
     <slot></slot>
   </div>
 </template>
 <script setup>
 
 
-const prpos = defineProps({
+const props = defineProps({
   isHover: {
     type: Boolean,
     default: false
   },
   isActive: {
+    type: Boolean,
+    default: false
+  },
+  showBeforeBorder: {
     type: Boolean,
     default: false
   },
@@ -25,7 +31,11 @@ const prpos = defineProps({
   hoverBackgroundColor: {
     type: String,
     default: 'var(--btn-hover)'
-  }
+  },
+  activeKeyboardColor: {
+    type: String,
+    default: 'var(--active-keyboard-color)'
+  },
 })
 
 
@@ -37,6 +47,20 @@ const prpos = defineProps({
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+
+  &.show-before-border:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 40%;
+    transform: translate(0%, 75%);
+    background-color: var(--bg-3-color);
+    border-radius: 8px;
+  }
+
 
   &:hover,
   &.hover {
@@ -44,7 +68,7 @@ const prpos = defineProps({
   }
 
   &.active {
-    background-color: var(--active-keyboard-color);
+    background-color: var(--activeBackgroundColor);
   }
 }
 </style>

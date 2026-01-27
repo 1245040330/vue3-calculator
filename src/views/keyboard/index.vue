@@ -1,7 +1,6 @@
 <template>
   <div class="keyboard-box"
-    :style="{ '--row-number': rowNumber, '--column-number': columnNumber, '--active-keyboard-color': '#9F9FA0' }">
-    {{ isSupported }}
+    :style="{ '--row-number': rowNumber, '--column-number': columnNumber }">
     <CustomToolbar class="custom-toolbar-box" v-if="customToolbar && customToolbar.length > 0"
       :custom-toolbar="customToolbar" @handle-key-press="handleKeyPress"></CustomToolbar>
     <div class="keyboard-list">
