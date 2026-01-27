@@ -16,6 +16,9 @@ https://1245040330.github.io/vue3-calculator/
 ### 科学计算器
 ![alt text](src/assets/images/demo1.png)
 
+### 日期计算
+![alt text](src/assets/images/demoDate.png)
+
 ## ✨ 功能特性
 
 - 🧮 **基础运算**：支持加减乘除四则运算

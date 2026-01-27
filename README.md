@@ -16,6 +16,9 @@ https://1245040330.github.io/vue3-calculator/
 ### scientific
 ![alt text](src/assets/images/demo1.png)
 
+### date calculation
+![alt text](src/assets/images/demoDate.png)
+
 ## ✨ Features
 
 - 🧮 **Basic Operations**: Support for addition, subtraction, multiplication, and division
