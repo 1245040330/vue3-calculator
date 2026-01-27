@@ -36,7 +36,6 @@ https://1245040330.github.io/vue3-calculator/
 - **State Management**: Pinia
 - **Mathematical Computation**: MathJS
 - **Mathematical Notation Rendering**: KaTeX
-- **Mobile UI**: Vant
 - **Keyboard Events**: @vueuse/core
 - **Styling**: SCSS + UnoCSS
 
@@ -138,7 +137,6 @@ const renderResult = katex.renderToString("x^{2}", { throwOnError: false })
 
 ## 📱 Mobile Adaptation
 
-- Mobile experience ensured with Vant component library
 - Responsive grid layout
 - Touch-friendly button design
 
