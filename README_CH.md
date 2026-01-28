@@ -19,6 +19,9 @@ https://1245040330.github.io/vue3-calculator/
 ### 日期计算
 ![alt text](src/assets/images/demoDate.png)
 
+### 设置
+![alt text](src/assets/images/demoSettings.png)
+
 ## ✨ 功能特性
 
 - 🧮 **基础运算**：支持加减乘除四则运算
