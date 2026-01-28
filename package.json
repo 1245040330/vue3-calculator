@@ -1,7 +1,7 @@
 {
   "name": "vue3-calculator",
   "private": false,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "type": "module",
   "files": [
     "dist"
@@ -53,8 +53,13 @@
     "vue": "^3.0.0",
     "vite-plugin-svg-icons": "^2.0.1"
   },
-  "keywords": ["vue","vue3", "calculator", "component"],
-  "author":"fengjie",
-  "description":"vue3 calculator component",
-  "license":"MIT"
+  "keywords": [
+    "vue",
+    "vue3",
+    "calculator",
+    "component"
+  ],
+  "author": "fengjie",
+  "description": "vue3 calculator component",
+  "license": "MIT"
 }
