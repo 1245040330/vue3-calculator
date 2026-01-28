@@ -35,7 +35,7 @@ export default defineConfig({
       // 暴露的全局变量（用于 UMD/IIFE 构建）
       name: 'Calculator',
       // 输出文件名
-      fileName: (format) => `vue3-calculator.${format}.js`
+      fileName: (format) => `vue3-calculator-ms.${format}.js`
     },
     rollupOptions: {
       // 确保外部化处理那些你不期望打包进库的依赖
@@ -52,7 +52,7 @@ export default defineConfig({
         },
         // 移除打包结果中的 hash 值（保持文件名整洁）
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name === 'style.css') return 'vue3-calculator.css';
+          if (assetInfo.name === 'style.css') return 'vue3-calculator-ms.css';
           return assetInfo.name;
         },
       }

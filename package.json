@@ -1,20 +1,20 @@
 {
-  "name": "vue3-calculator",
+  "name": "vue3-calculator-ms",
   "private": false,
-  "version": "1.1.1",
+  "version": "1.1.2",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/vue3-calculator.umd.js",
-  "module": "./dist/vue3-calculator.es.js",
+  "main": "./dist/vue3-calculator-ms.umd.js",
+  "module": "./dist/vue3-calculator-ms.es.js",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/vue3-calculator.es.js",
-      "require": "./dist/vue3-calculator.umd.js"
+      "import": "./dist/vue3-calculator-ms.es.js",
+      "require": "./dist/vue3-calculator-ms.umd.js"
     },
-    "./dist/vue3-calculator.css": "./dist/vue3-calculator.css"
+    "./dist/vue3-calculator-ms.css": "./dist/vue3-calculator-ms.css"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
