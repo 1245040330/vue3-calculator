@@ -11,16 +11,16 @@ https://1245040330.github.io/vue3-calculator/
 ## 🧩 截图
 
 ### 标准计算器
-![alt text](src/assets/images/demo.png)
+![alt text](https://github.com/1245040330/vue3-calculator/raw/main/src/assets/images/demo.png)
 
 ### 科学计算器
-![alt text](src/assets/images/demo1.png)
+![alt text](https://github.com/1245040330/vue3-calculator/raw/main/src/assets/images/demo1.png)
 
 ### 日期计算
-![alt text](src/assets/images/demoDate.png)
+![alt text](https://github.com/1245040330/vue3-calculator/raw/main/src/assets/images/demoDate.png)
 
 ### 设置
-![alt text](src/assets/images/demoSettings.png)
+![alt text](https://github.com/1245040330/vue3-calculator/raw/main/src/assets/images/demoSettings.png)
 
 ## ✅ 已实现功能
 
@@ -120,11 +120,11 @@ vue3-calculator/
 
 ### npm组件 引用
 ```bash
-npm install vue3-calculator
+npm install vue3-calculator-ms
 
 #main.js use
-import Calculator from 'vue3-calculator'
-import 'vue3-calculator/dist/vue3-calculator.css'
+import Calculator from 'vue3-calculator-ms'
+import 'vue3-calculator-ms/dist/vue3-calculator-ms.css'
 import "katex/dist/katex.min.css";
 app.use(Calculator)
 ```
