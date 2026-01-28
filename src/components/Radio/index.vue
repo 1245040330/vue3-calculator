@@ -38,7 +38,6 @@ const handleChange = () => {
     padding-left: 30px;
     /* 为圆圈留出空间 */
     cursor: pointer;
-    font-size: 16px;
     user-select: none;
 
     /* 自定义大圆圈 */
