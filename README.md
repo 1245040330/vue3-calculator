@@ -31,6 +31,11 @@ https://1245040330.github.io/vue3-calculator/
 - 📱 **Responsive Design**: Mobile and desktop compatibility
 - 🧠 **Smart Calculation**: Integrated MathJS for complex mathematical expressions
 - ⚡ **Fast Performance**: Built with Vue3 and Vite for optimal speed
+- 📅 **Date Calculation**: Support for date difference calculation and date addition/subtraction
+- 🌍 **Internationalization**: Multi-language support (English and Chinese)
+- 💾 **Memory Functions**: Store and recall calculation results
+- ⚙️ **Settings**: Customizable calculator preferences
+- 🔍 **Advanced Functions**: Trigonometric functions and other scientific calculations
 
 ## 🚀 Tech Stack
 
@@ -41,6 +46,9 @@ https://1245040330.github.io/vue3-calculator/
 - **Mathematical Notation Rendering**: KaTeX
 - **Keyboard Events**: @vueuse/core
 - **Styling**: SCSS + UnoCSS
+- **Date Calculation**: Day.js
+- **Internationalization**: Vue I18n
+- **Icons**: SVG Icons
 
 ## 📦 Project Structure
 
@@ -48,19 +56,38 @@ https://1245040330.github.io/vue3-calculator/
 vue3-calculator/
 ├── src/
 │   ├── assets/              # Static assets
+│   │   ├── icons/           # SVG icons
+│   │   ├── images/          # Image resources
+│   │   └── sounds/          # Sound effects
 │   ├── components/          # Common components
+│   │   ├── Radio/           # Radio button component
+│   │   ├── Select/          # Select component
+│   │   └── SvgIcon.vue      # SVG icon component
 │   ├── config/              # Configuration files
+│   ├── i18n/                # Internationalization setup
+│   ├── locales/             # Language files
+│   │   ├── en.json          # English translations
+│   │   └── zh-cn.json       # Chinese translations
 │   ├── store/               # State management (Pinia)
+│   │   ├── modules/         # Store modules
 │   ├── utils/               # Utility functions
 │   ├── views/               # Page components
+│   │   ├── dateCalculation/ # Date calculation features
+│   │   │   ├── addSubDays.vue # Add/subtract days
+│   │   │   ├── diffDates.vue  # Date difference calculator
 │   │   ├── display/         # Display screen components
 │   │   ├── header/          # Header components
 │   │   ├── keyboard/        # Keyboard components
 │   │   ├── memoryCapability/# Memory capability components
-│   │   └── more/            # More features components
-│   └── main.js              # Application entry point
+│   │   ├── more/            # More features components
+│   │   └── settings/        # Settings components
+│   ├── App.vue              # Root component
+│   ├── main.js              # Application entry point
+│   └── style.css            # Global styles
 ├── public/                  # Public resources
-└── package.json
+├── README.md                # English documentation
+├── README_CH.md             # Chinese documentation
+└── package.json             # Project configuration
 ```
 
 ## 🛠️ Installation & Setup
@@ -98,12 +125,34 @@ npm run preview
 | C | Clear all |
 | CE | Clear current entry |
 | . | Decimal point |
+| ( ) | Parentheses for grouping |
+| % | Percentage calculation |
+| = | Calculate result |
+| Ctrl + M | Memory functions |
+| Ctrl + Z | Undo |
 
 ## 🧮 Supported Mathematical Functions
 
-- Basic operations: `1 + 2`, `3 * 4`, `10 / 2`, `8 - 3`
-- Decimal operations: `3.14 + 2.5`
-- Complex expressions: `2 * (3 + 4)`, `sqrt(16)`, `pow(2, 3)`
+- **Basic Operations**: `1 + 2`, `3 * 4`, `10 / 2`, `8 - 3`
+- **Decimal Operations**: `3.14 + 2.5`
+- **Complex Expressions**: `2 * (3 + 4)`, `sqrt(16)`, `pow(2, 3)`
+- **Trigonometric Functions**: `sin(π/2)`, `cos(0)`, `tan(π/4)`
+- **Exponential & Logarithmic**: `exp(1)`, `log(100)`, `ln(e)`
+- **Statistical Functions**: `mean([1, 2, 3])`, `median([1, 2, 3])`
+- **Logical Operations**: `2 > 1`, `3 == 3`
+
+## 📅 Date Calculation Features
+
+- **Date Difference Calculator**: Calculate the difference between two dates in years, months, weeks, and days
+- **Date Addition/Subtraction**: Add or subtract years, months, and days from a given date
+- **Format Support**: YYYY-MM-DD format with day of week display
+
+## 🌍 Internationalization Support
+
+- **Languages**: English and Chinese
+- **Dynamic Switching**: Seamless language change without page reload
+- **Localized Date Formats**: Region-specific date formatting
+- **Translated UI Elements**: All user interface elements fully translated
 
 ## 🔧 Core Implementation
 

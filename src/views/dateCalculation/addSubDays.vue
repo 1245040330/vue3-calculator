@@ -28,12 +28,18 @@
 
 </template>
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed,watch } from 'vue'
 import Select from "@/components/Select/index.vue"
 import Radio from "@/components/Radio/index.vue"
 
 import dayjs from 'dayjs'
 
+import { useCalculatorStore } from '@/store'
+const calculatorStore = useCalculatorStore()
+import 'dayjs/locale/zh-cn' // 引入中文包
+watch(()=>calculatorStore.language, (value) => {
+    dayjs.locale(value)
+},{immediate:true})
 const from = ref('2026-03-17')
 const operation = ref('add')
 const years = ref('1')

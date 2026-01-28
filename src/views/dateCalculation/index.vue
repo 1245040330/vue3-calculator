@@ -5,7 +5,7 @@
                 {{ $t(activePopoverButton.label||'')||activePopoverButton.label  }}<SvgIcon name="downwardArrow" size="14px" style="margin-left: 4px;"></SvgIcon>
             </div>
             <div class="button-list" :style="popoverStyle" style="position: fixed; " v-if="showPopover">
-                <KeyboardButton v-for="(itemKeyboard, itemKeyboardIndex) in keyboardList" v-if="keyboardList.length > 0"
+                <KeyboardButton v-for="(itemKeyboard, itemKeyboardIndex) in keyboardList"
                     active-keyboard-color="var(--btn-hover)"
                     :is-active="activePopoverButton.key == (itemKeyboard.key || itemKeyboard.label)"
                     :key="itemKeyboardIndex" @click="handleClickKeyboard(itemKeyboard, index)" style="padding: 4px 8px"
