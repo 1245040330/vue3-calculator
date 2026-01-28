@@ -7,9 +7,10 @@ export const useCalculatorStore = defineStore('calculator', {
         data: {
             currentText: '0',
             calculationText: "",
-            activeMenu: useStorage('calculator0-active-menu', {key:'standard',name:'calculator.standard'}) ,
-            angleUnit:useStorage('calculator0-angle-unit', 'DEG'),//DEG,RAD,GRAD
-            version:'1.0.1',
+            activeMenu: useStorage('calculator-active-menu', { key: 'standard', name: 'calculator.standard' }),
+            angleUnit: useStorage('calculator-angle-unit', 'DEG'),//DEG,RAD,GRAD
+            version: '1.1.0',
+            language: useStorage('calculator-language', 'en')
         }
 
     }),
@@ -23,11 +24,14 @@ export const useCalculatorStore = defineStore('calculator', {
         activeMenu() {
             return this.data.activeMenu
         },
-        angleUnit(){
+        angleUnit() {
             return this.data.angleUnit
         },
-        version(){
+        version() {
             return this.data.version
+        },
+        language() {
+            return this.data.language
         }
 
     },
@@ -41,8 +45,11 @@ export const useCalculatorStore = defineStore('calculator', {
         setActiveMenu(value) {
             this.data.activeMenu = value
         },
-        setAngleUnit(value){
+        setAngleUnit(value) {
             this.data.angleUnit = value
         },
+        setLanguage(value) {
+            this.data.language = value
+        }
     },
 })

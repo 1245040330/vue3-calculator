@@ -11,9 +11,9 @@
         </div>
         <div class="setting-box">
 
-            <div class="button" @click="next()">
+            <div class="button" @click="handleClick({ name: 'calculator.settings', key: 'settings' })">
                 <SvgIcon class="svg-box" name="setting" :size="14" color="var(--text-color)" style="padding: 2px 8px" />
-                <div>{{ $t('calculator.settings') }} {{ calculatorStore.version }} {{ state }}</div>
+                <div>{{ $t('calculator.settings') }}</div>
             </div>
 
         </div>
@@ -21,23 +21,17 @@
     </div>
 </template>
 <script setup>
-import { watch, useTemplateRef,computed } from 'vue'
+import { useTemplateRef, computed } from 'vue'
 import { useCalculatorStore } from '@/store'
 const calculatorStore = useCalculatorStore()
-import { useColorMode, useCycleList, onClickOutside } from '@vueuse/core'
+import { onClickOutside } from '@vueuse/core'
 import { keynoardConfig } from '@/config/calculator'
 const emits = defineEmits(['more-click'])
 const activeMenu = defineModel('activeMenu')
-const mode = useColorMode({
-    emitAuto: true,
-})
+
 const moreRef = useTemplateRef('moreRef')
 
-const { state, next } = useCycleList(['dark', 'light', 'auto'], { initialValue: mode })
-watch(state, (newVal) => {
-    mode.value = newVal
-})
-const moreList =computed(()=>{
+const moreList = computed(() => {
     return keynoardConfig.moreMenuList
 })
 

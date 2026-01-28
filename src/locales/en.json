@@ -39,6 +39,21 @@
 	"scientific":{
 		"trigonometry":"Trigonometry",
         "function":"Function"
-	}
+	},
+    "settings":{
+        "appearance":"Appearance",
+        "appTheme":"App theme",
+        "appThemeTips":"Select which app theme to display",
+        "about":"About",
+        "aboutTips":"Vue3 + Vite + MathJS",
+        "githubTips":"To learn how you can contribute to Web Calculator, check out the project on <a href='https://github.com/1245040330/vue3-calculator'  target='_blank'>GitHub</a>.",
+        "language":"Language",
+        "languageTips":"The calculator will use this language",
+        "appThemeOptions":{
+            "light":"Light",
+            "dark":"Dark",
+            "useSystemSetting":"Use system setting"
+        }
+    }
     
 }

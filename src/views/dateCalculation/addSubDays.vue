@@ -3,14 +3,8 @@
         <div class="tips-box">{{ $t('dateCalculation.from') }}</div>
         <input v-model="from" type="text">
         <div class="radio-group">
-            <div class="radio-container" :class="[operation == 'add' ? 'checked' : '']" @click="updateOperation('add')">
-                <div class="custom-radio"></div>
-                {{ $t('dateCalculation.add') }}
-            </div>
-            <div class="radio-container" :class="[operation == 'sub' ? 'checked' : '']" @click="updateOperation('sub')">
-                <div class="custom-radio"></div>
-                 {{ $t('dateCalculation.subtract') }}
-            </div>
+            <Radio value="add" label="dateCalculation.add" :checked="operation == 'add'" @change="updateOperation"></Radio>
+            <Radio value="sub" label="dateCalculation.subtract" :checked="operation == 'sub'" @change="updateOperation"></Radio>
         </div>
         <div class="tips-group">
             <div class="tips-box" style="width: 88px;">{{ $t('dateCalculation.year') }}</div>
@@ -36,6 +30,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import Select from "@/components/Select/index.vue"
+import Radio from "@/components/Radio/index.vue"
 
 import dayjs from 'dayjs'
 

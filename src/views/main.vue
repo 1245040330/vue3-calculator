@@ -1,9 +1,8 @@
 <template>
   <div class="main-box">
     <Header @more-click="changeShowMenu" :name="activeMenu.name"></Header>
-    <template v-if="activeMenu.key == 'dateCalculation'">
-      <DateCalculation style="flex:1;height: 1px;"></DateCalculation>
-    </template>
+    <DateCalculation v-if="activeMenu.key == 'dateCalculation'" style="flex:1;height: 1px;"></DateCalculation>
+    <Settings v-else-if="activeMenu.key == 'settings'"></Settings>
     <template v-else>
       <Display style="flex:1;height: 1px;"></Display>
       <MemoryCapability></MemoryCapability>
@@ -21,6 +20,7 @@ import MemoryCapability from "@/views/memoryCapability/index.vue"
 import Keyboard from "@/views/keyboard/index.vue"
 import More from "@/views/more/index.vue"
 import DateCalculation from "@/views/dateCalculation/index.vue"
+import Settings from "@/views/settings/index.vue"
 import { useCalculatorStore } from '@/store'
 const calculatorStore = useCalculatorStore()
 const showMenu = ref(false)

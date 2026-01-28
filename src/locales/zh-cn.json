@@ -1,43 +1,58 @@
 {
-	"calculator":{
-		"settings":"设置",
-		"calculator":"计算器",
-		"standard":"标准",
-		"scientific":"科学",
-		"graphing":"绘图",
-		"programmer":"程序员",
-		"dateCalculation":"日期计算",
-		"converter":"转换器",
-		"currency":"货币",
-        "volume":"体积",
-        "length":"长度",
-        "weightAndMass":"重量",
-        "temperature":"温度",
-        "energy":"能量",
-        "area":"面积",
-        "speed":"速度",
-        "time":"时间",
-        "power":"功率",
-        "data":"数据",
-        "pressure":"压强",
-        "angle":"角度"
+	"calculator": {
+		"settings": "设置",
+		"calculator": "计算器",
+		"standard": "标准",
+		"scientific": "科学",
+		"graphing": "绘图",
+		"programmer": "程序员",
+		"dateCalculation": "日期计算",
+		"converter": "转换器",
+		"currency": "货币",
+		"volume": "体积",
+		"length": "长度",
+		"weightAndMass": "重量",
+		"temperature": "温度",
+		"energy": "能量",
+		"area": "面积",
+		"speed": "速度",
+		"time": "时间",
+		"power": "功率",
+		"data": "数据",
+		"pressure": "压强",
+		"angle": "角度"
 	},
 	"dateCalculation": {
 		"from": "开始日期",
 		"to": "结束日期",
-		"year":"年",
-		"month":"月",
-		"week":"周",
-		"day":"天",
-		"differenceBetweenDates":"日期之间的相隔时间",
-		"addSubDays":"添加或减去天数",
-		"add":"添加",
-		"subtract":"减去",
-		"date":"日期",
-		"difference":"差值"
+		"year": "年",
+		"month": "月",
+		"week": "周",
+		"day": "天",
+		"differenceBetweenDates": "日期之间的相隔时间",
+		"addSubDays": "添加或减去天数",
+		"add": "添加",
+		"subtract": "减去",
+		"date": "日期",
+		"difference": "差值"
 	},
-	"scientific":{
-		"trigonometry":"三角学",
-		"function":"函数"
+	"scientific": {
+		"trigonometry": "三角学",
+		"function": "函数"
+	},
+	"settings": {
+		"appearance": "外观",
+		"appTheme": "应用程序主题",
+		"appThemeTips": "选择要显示的应用主题",
+		"about": "关于",
+		"aboutTips": "Vue3 + Vite + MathJS",
+		"githubTips": "若要了解如何参与 web 计算器, 请在<a href='https://github.com/1245040330/vue3-calculator' target='_blank'>GitHub</a>上查看该项目。",
+		"language":"语言",
+		"languageTips":"计算器将使用此语言",
+		"appThemeOptions":{
+            "light":"浅色",
+            "dark":"深色",
+            "useSystemSetting":"使用系统设置"
+        }
 	}
 }
