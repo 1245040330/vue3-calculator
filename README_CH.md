@@ -118,6 +118,17 @@ vue3-calculator/
 
 ## 🛠️ 安装与运行
 
+### npm组件 引用
+```bash
+npm install vue3-calculator
+
+#main.js use
+import Calculator from 'vue3-calculator'
+import 'vue3-calculator/dist/vue3-calculator.css'
+import "katex/dist/katex.min.css";
+app.use(Calculator)
+```
+
 ### 安装依赖
 ```bash
 npm install

@@ -9,7 +9,6 @@ import { onMounted, computed } from "vue"
 import { useCalculatorStore } from '@/store'
 import { parse as mathParse } from "mathjs";
 import katex from "katex";
-import "katex/dist/katex.min.css";
 const calculatorStore = useCalculatorStore()
 
 const calculationText = computed({

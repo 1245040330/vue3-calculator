@@ -1,8 +1,24 @@
 {
-  "name": "vue3-phone",
-  "private": true,
-  "version": "0.0.0",
+  "name": "vue3-calculator",
+  "private": false,
+  "version": "1.1.0",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/vue3-calculator.umd.js",
+  "module": "./dist/vue3-calculator.es.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/vue3-calculator.es.js",
+      "require": "./dist/vue3-calculator.umd.js"
+    },
+    "./dist/vue3-calculator.css": "./dist/vue3-calculator.css"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
   "scripts": {
     "serve": "vite",
     "dev": "vite",
@@ -21,7 +37,6 @@
     "pinia-plugin-persistedstate": "^4.7.1",
     "qrcode": "^1.5.4",
     "ua-parser-js": "^2.0.8",
-    "vue": "^3.5.13",
     "vue-i18n": "^9.14.4"
   },
   "devDependencies": {
@@ -34,6 +49,12 @@
     "unplugin-auto-import": "^0.19.0",
     "unplugin-vue-components": "^0.27.5",
     "vite": "^6.0.1",
+    "vite-plugin-dts": "^4.5.4",
+    "vue": "^3.0.0",
     "vite-plugin-svg-icons": "^2.0.1"
-  }
+  },
+  "keywords": ["vue","vue3", "calculator", "component"],
+  "author":"fengjie",
+  "description":"vue3 calculator component",
+  "license":"MIT"
 }
