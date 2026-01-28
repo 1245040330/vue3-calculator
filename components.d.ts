@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    Radio: typeof import('./src/components/Radio/index.vue')['default']
     Select: typeof import('./src/components/Select/index.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon.vue')['default']
   }
