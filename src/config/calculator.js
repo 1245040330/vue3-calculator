@@ -1,6 +1,91 @@
 import SvgIcon from "@/components/SvgIcon.vue";
 import { h, } from "vue";
 export const keynoardConfig = {
+    moreMenuList: [
+        {
+            name: 'calculator.calculator',
+            children: [
+                {
+                    name: 'calculator.standard',
+                    key: "standard"
+                },
+                {
+                    name: 'calculator.scientific',
+                    key: 'scientific'
+                },
+                {
+                    name: 'calculator.graphing',
+                    disabled: true,
+                },
+                {
+                    name: 'calculator.programmer',
+                    disabled: true,
+                },
+                {
+                    name: 'calculator.dateCalculation',
+                    key: 'dateCalculation',
+                }
+            ]
+        },
+        {
+            name: 'calculator.converter',
+            children: [
+                {
+                    name: 'calculator.currency',
+                    disabled: true,
+                },
+                {
+                    name: 'calculator.volume',
+                    disabled: true,
+                },
+                {
+                    name: 'calculator.length',
+                    disabled: true,
+                },
+                {
+                    name: 'calculator.weightAndMass',
+                    disabled: true,
+                },
+                {
+                    name: 'calculator.temperature',
+                    disabled: true,
+                },
+                {
+                    name: 'calculator.energy',
+                    disabled: true,
+                },
+                {
+                    name: 'calculator.area',
+                    disabled: true,
+                },
+                {
+                    name: 'calculator.speed',
+                    disabled: true,
+                },
+                {
+                    name: 'calculator.time',
+                    disabled: true,
+                },
+                {
+                    name: 'calculator.power',
+                    disabled: true,
+                },
+                {
+                    name: 'calculator.data',
+                    disabled: true,
+                },
+                {
+                    name: 'calculator.pressure',
+                    disabled: true,
+                },
+                {
+                    name: 'calculator.angle',
+                    disabled: true,
+                },
+
+            ]
+        }
+    ],
     standard: {
         keyboardList: [
             {
@@ -306,7 +391,7 @@ export const keynoardConfig = {
         ],
         customToolbar: [
             {
-                name: 'Trigonometry',
+                name: 'scientific.trigonometry',
                 key: 'trigonometry',
                 iconComponent: h(
                     SvgIcon,
@@ -430,7 +515,7 @@ export const keynoardConfig = {
                 ]
             },
             {
-                name: 'Function',
+                name: 'scientific.function',
                 key: 'function',
                 latex: '\\int',
                 rowNumber: 2,
@@ -470,11 +555,11 @@ export const keynoardConfig = {
     dateCalculation: {
         keyboardList: [
             {
-                label: "Difference between dates",
+                label: "dateCalculation.differenceBetweenDates",
                 key: "DiffDates"
             },
             {
-                label: "Add or subtract days",
+                label: "dateCalculation.addSubDays",
                 key: "AddSubDays"
             },
         ]

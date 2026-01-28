@@ -7,7 +7,7 @@ export const useCalculatorStore = defineStore('calculator', {
         data: {
             currentText: '0',
             calculationText: "",
-            activeMenu: useStorage('calculator0-active-menu', 'standard') ,
+            activeMenu: useStorage('calculator0-active-menu', {key:'standard',name:'calculator.standard'}) ,
             angleUnit:useStorage('calculator0-angle-unit', 'DEG'),//DEG,RAD,GRAD
             version:'1.0.1',
         }

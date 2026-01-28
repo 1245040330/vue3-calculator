@@ -7,7 +7,7 @@
                 <span v-if="item.latex" v-html="renderKeyboardLabel(item)"></span>
             </div>
 
-            {{ item.name }}
+            {{ $t(item.name) }}
         </div>
         <div class="button-list" :style="popoverStyle" style="position: fixed; " v-if="showPopover">
             <KeyboardButton v-for="(itemKeyboard, itemKeyboardIndex) in acitveItemKeybord.keyboardList"

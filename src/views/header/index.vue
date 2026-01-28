@@ -2,7 +2,7 @@
   <div class="header-box">
     <SvgIcon @click="emits('more-click',true)" class="svg-box" name="more" :size="14" color="var(--text-color)"
       style="padding: 10px 12px" />
-    {{ name }}
+    {{ $t(name||'') }}
   </div>
 </template>
 <script setup>
@@ -10,7 +10,7 @@ import { ref } from "vue";
 const props = defineProps({
   name:{
     type:String,
-    default:'标准'
+    default:''
   },
 })
 const emits = defineEmits(['more-click'])

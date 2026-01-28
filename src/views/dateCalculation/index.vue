@@ -2,7 +2,7 @@
     <div class="date-calculation">
         <div class="popover-box" ref="popoverRef">
             <div class="popover-button" ref="popoverButtonRef" @click="handleClick()">
-                {{ activePopoverButton.label }}<SvgIcon name="downwardArrow" size="14px" style="margin-left: 4px;"></SvgIcon>
+                {{ $t(activePopoverButton.label||'')||activePopoverButton.label  }}<SvgIcon name="downwardArrow" size="14px" style="margin-left: 4px;"></SvgIcon>
             </div>
             <div class="button-list" :style="popoverStyle" style="position: fixed; " v-if="showPopover">
                 <KeyboardButton v-for="(itemKeyboard, itemKeyboardIndex) in keyboardList" v-if="keyboardList.length > 0"
@@ -10,7 +10,7 @@
                     :is-active="activePopoverButton.key == (itemKeyboard.key || itemKeyboard.label)"
                     :key="itemKeyboardIndex" @click="handleClickKeyboard(itemKeyboard, index)" style="padding: 4px 8px"
                     :show-before-border="true">
-                    <div>{{ itemKeyboard.label }}</div>
+                    <div>{{ $t(itemKeyboard.label )}}</div>
                 </KeyboardButton>
             </div>
         </div>
@@ -22,7 +22,7 @@
     </div>
 </template>
 <script setup>
-import { ref, useTemplateRef, computed } from 'vue'
+import { onMounted,ref, useTemplateRef, computed } from 'vue'
 import { useCalculatorStore } from '@/store'
 import { keynoardConfig } from '@/config/calculator'
 import { useElementBounding, onClickOutside } from '@vueuse/core'
@@ -33,22 +33,23 @@ const calculatorStore = useCalculatorStore()
 const popoverButtonRef = useTemplateRef("popoverButtonRef")
 const popoverRef = useTemplateRef("popoverRef")
 const activePopoverButton = ref({
-    label: 'Difference between dates',
-    key: "DiffDates"
 });
 const showPopover = ref(false)
 const popoverStyle = ref({
-
+    label:''
 })
 
 const activeKeynoard = computed(() => {
-    return keynoardConfig[calculatorStore.activeMenu] || {}
+    return keynoardConfig[calculatorStore.activeMenu.key] || {}
 })
 const keyboardList = computed(() => {
     return activeKeynoard.value.keyboardList || []
 })
 onClickOutside(popoverRef, event => {
     showPopover.value = false;
+})
+onMounted(()=>{
+    activePopoverButton.value = keyboardList.value[0]||{}
 })
 
 const handleClick = () => {

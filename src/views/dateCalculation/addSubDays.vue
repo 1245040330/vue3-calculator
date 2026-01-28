@@ -1,21 +1,21 @@
 <template>
     <div class="add-sub-days">
-        <div class="tips-box">From</div>
+        <div class="tips-box">{{ $t('dateCalculation.from') }}</div>
         <input v-model="from" type="text">
         <div class="radio-group">
             <div class="radio-container" :class="[operation == 'add' ? 'checked' : '']" @click="updateOperation('add')">
                 <div class="custom-radio"></div>
-                Add
+                {{ $t('dateCalculation.add') }}
             </div>
             <div class="radio-container" :class="[operation == 'sub' ? 'checked' : '']" @click="updateOperation('sub')">
                 <div class="custom-radio"></div>
-                Subtract
+                 {{ $t('dateCalculation.subtract') }}
             </div>
         </div>
         <div class="tips-group">
-            <div class="tips-box" style="width: 88px;">Years</div>
-            <div class="tips-box" style="width: 88px;">Months</div>
-            <div class="tips-box" style="width: 88px;">Days</div>
+            <div class="tips-box" style="width: 88px;">{{ $t('dateCalculation.year') }}</div>
+            <div class="tips-box" style="width: 88px;">{{ $t('dateCalculation.month') }}</div>
+            <div class="tips-box" style="width: 88px;">{{ $t('dateCalculation.day') }}</div>
         </div>
         <div class="select-group">
             <Select class="select-box" v-model="years" :options="options">
@@ -25,7 +25,7 @@
             <Select class="select-box" v-model="days" :options="options">
             </Select>
         </div>
-        <div class="tips-box">Date</div>
+        <div class="tips-box">{{$t('dateCalculation.date')}}</div>
         <div>
             {{ dateString }}
         </div>

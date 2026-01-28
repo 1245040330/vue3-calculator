@@ -1,0 +1,44 @@
+{
+    "calculator":{
+        "settings":"Settings",
+        "calculator":"Calculator",
+		"standard":"Standard",
+		"scientific":"Scientific",
+        "graphing":"Graphing",
+        "programmer":"Programmer",
+		"dateCalculation":"DateCalculation",
+        "converter":"Converter",
+        "currency":"Currency",
+        "volume":"Volume",
+        "length":"Length",
+        "weightAndMass":"Weight and Mass",
+        "temperature":"Temperature",
+        "energy":"Energy",
+        "area":"Area",
+        "speed":"Speed",
+        "time":"Time",
+        "power":"Power",
+        "data":"Data",
+        "pressure":"Pressure",
+        "angle":"Angle"
+	},
+    "dateCalculation":{
+        "from":"From",
+        "to": "To",
+        "year":"years",
+        "month":"months",
+        "week":"weeks",
+        "day":"days",
+        "differenceBetweenDates":"Difference between dates",
+        "addSubDays":"Add or subtract days",
+		"add":"Add",
+		"subtract":"Subtract",
+        "date":"Date",
+		"difference":"Difference"
+    },
+	"scientific":{
+		"trigonometry":"Trigonometry",
+        "function":"Function"
+	}
+    
+}

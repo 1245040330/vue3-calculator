@@ -4,16 +4,16 @@
             style="padding: 10px 12px" />
         <div class="menu-list">
             <div class="sub-menu" v-for="item in moreList" :key="item.name">
-                <div class="menu-item group-name"> {{ item.name }}</div>
+                <div class="menu-item group-name"> {{ $t(item.name) }}</div>
                 <div class="menu-item" v-for="child in item.children" :key="child.name" :class="getMenuItemClass(child)"
-                    @click="handleClick(child)"> {{ child.name }}</div>
+                    @click="handleClick(child)"> {{ $t(child.name) }}</div>
             </div>
         </div>
         <div class="setting-box">
 
             <div class="button" @click="next()">
                 <SvgIcon class="svg-box" name="setting" :size="14" color="var(--text-color)" style="padding: 2px 8px" />
-                <div>设置 {{ calculatorStore.version }} {{ state }}</div>
+                <div>{{ $t('calculator.settings') }} {{ calculatorStore.version }} {{ state }}</div>
             </div>
 
         </div>
@@ -21,107 +21,25 @@
     </div>
 </template>
 <script setup>
-import { watch,useTemplateRef } from 'vue'
+import { watch, useTemplateRef,computed } from 'vue'
 import { useCalculatorStore } from '@/store'
 const calculatorStore = useCalculatorStore()
 import { useColorMode, useCycleList, onClickOutside } from '@vueuse/core'
-
+import { keynoardConfig } from '@/config/calculator'
 const emits = defineEmits(['more-click'])
 const activeMenu = defineModel('activeMenu')
 const mode = useColorMode({
     emitAuto: true,
 })
-const moreRef =useTemplateRef('moreRef')
+const moreRef = useTemplateRef('moreRef')
 
 const { state, next } = useCycleList(['dark', 'light', 'auto'], { initialValue: mode })
 watch(state, (newVal) => {
     mode.value = newVal
 })
-const moreList = [
-    {
-        name: '计算器',
-        children: [
-            {
-                name: '标准',
-                key: "standard"
-            },
-            {
-                name: '科学',
-                key: 'scientific'
-            },
-            {
-                name: '绘图',
-                disabled: true,
-            },
-            {
-                name: '程序员',
-                disabled: true,
-            },
-            {
-                name: '日期计算',
-                key:'dateCalculation',
-            }
-        ]
-    },
-    {
-        name: '转换器',
-        children: [
-            {
-                name: '货币',
-                disabled: true,
-            },
-            {
-                name: '体积',
-                disabled: true,
-            },
-            {
-                name: '长度',
-                disabled: true,
-            },
-            {
-                name: '重量',
-                disabled: true,
-            },
-            {
-                name: '温度',
-                disabled: true,
-            },
-            {
-                name: '能量',
-                disabled: true,
-            },
-            {
-                name: '面积',
-                disabled: true,
-            },
-            {
-                name: '速度',
-                disabled: true,
-            },
-            {
-                name: '时间',
-                disabled: true,
-            },
-            {
-                name: '功率',
-                disabled: true,
-            },
-            {
-                name: '数据',
-                disabled: true,
-            },
-            {
-                name: '压强',
-                disabled: true,
-            },
-            {
-                name: '角度',
-                disabled: true,
-            },
-
-        ]
-    }
-]
+const moreList =computed(()=>{
+    return keynoardConfig.moreMenuList
+})
 
 
 //点击元素以外的盒子
@@ -134,17 +52,17 @@ onClickOutside(moreRef, event => {
  * @param item 
  */
 const getMenuItemClass = (item) => {
-    return [activeMenu.value == (item.key || item.name) ? 'active' : '', item.disabled ? 'disabled' : 'menu-item-content']
+    return [activeMenu.value.key == (item.key || item.name) ? 'active' : '', item.disabled ? 'disabled' : 'menu-item-content']
 }
 /**
  *  点击事件
  * @param item 
  */
 const handleClick = (item) => {
-    if(item.disabled){
+    if (item.disabled) {
         return;
     }
-    activeMenu.value = item.key || item.name;
+    activeMenu.value = item;
     emits('more-click', false)
 }
 </script>

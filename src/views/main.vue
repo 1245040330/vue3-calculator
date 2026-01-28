@@ -1,7 +1,7 @@
 <template>
   <div class="main-box">
-    <Header @more-click="changeShowMenu" :name="activeMenu"></Header>
-    <template v-if="activeMenu == 'dateCalculation'">
+    <Header @more-click="changeShowMenu" :name="activeMenu.name"></Header>
+    <template v-if="activeMenu.key == 'dateCalculation'">
       <DateCalculation style="flex:1;height: 1px;"></DateCalculation>
     </template>
     <template v-else>

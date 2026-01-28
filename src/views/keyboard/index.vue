@@ -59,7 +59,7 @@ watch(() => currentText.value, (newVal, oldVal) => {
   updateCurremtText.value = true
 })
 const activeKeynoard = computed(() => {
-  return keynoardConfig[calculatorStore.activeMenu] || {}
+  return keynoardConfig[calculatorStore.activeMenu.key] || {}
 })
 watch(() => calculatorStore.activeMenu, () => {
   init()
