@@ -22,6 +22,31 @@ https://1245040330.github.io/vue3-calculator/
 ### settings
 ![alt text](src/assets/images/demoSettings.png)
 
+## ✅ Implemented Features
+
+- 🎯 **Standard Calculator**: Basic arithmetic operations (+, -, ×, ÷) with decimal support
+- 🔬 **Scientific Calculator**: Advanced mathematical functions including trigonometry, logarithms, and exponentials
+- 📅 **Date Calculation**: Date difference calculation and date addition/subtraction functionality
+
+## 🗒️ Todo Items
+
+### Features to Implement
+- [ ] **Graphing Calculator**: Plot mathematical functions and equations
+- [ ] **Programmer Calculator**: Binary, octal, hexadecimal conversions and operations
+- [ ] **Currency Converter**: Real-time currency exchange rates and conversions
+- [ ] **Volume Converter**: Convert between different volume units
+- [ ] **Length Converter**: Convert between different length units
+- [ ] **Weight Converter**: Convert between different weight units
+- [ ] **Temperature Converter**: Convert between Celsius, Fahrenheit, Kelvin, etc.
+- [ ] **Energy Converter**: Convert between different energy units
+- [ ] **Area Converter**: Convert between different area units
+- [ ] **Speed Converter**: Convert between different speed units
+- [ ] **Time Converter**: Convert between different time units
+- [ ] **Power Converter**: Convert between different power units
+- [ ] **Data Converter**: Convert between different data storage units
+- [ ] **Pressure Converter**: Convert between different pressure units
+- [ ] **Angle Converter**: Convert between degrees, radians, and gradients
+
 ## ✨ Features
 
 - 🧮 **Basic Operations**: Support for addition, subtraction, multiplication, and division
@@ -153,6 +178,8 @@ npm run preview
 - **Dynamic Switching**: Seamless language change without page reload
 - **Localized Date Formats**: Region-specific date formatting
 - **Translated UI Elements**: All user interface elements fully translated
+
+
 
 ## 🔧 Core Implementation
 
