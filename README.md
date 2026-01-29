@@ -26,6 +26,146 @@ https://1245040330.github.io/vue3-calculator/
 ### settings
 ![alt text](https://github.com/1245040330/vue3-calculator/raw/main/src/assets/images/demoSettings.png)
 
+
+## 🧩 Component Usage
+
+### Installation
+
+```bash
+npm install vue3-calculator-ms
+# or
+yarn add vue3-calculator-ms
+```
+
+### Basic Usage
+
+```javascript
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import Calculator from 'vue3-calculator-ms'
+import 'vue3-calculator-ms/dist/vue3-calculator-ms.css'
+import "katex/dist/katex.min.css";
+
+const app = createApp(App)
+app.use(Calculator)
+app.mount('#app')
+```
+
+```vue
+<!-- App.vue -->
+<template>
+  <div class="app">
+    <Calculator />
+  </div>
+</template>
+
+<script setup>
+// No need to import Calculator if registered globally
+</script>
+
+<style>
+.app {
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+```
+
+### Component Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `initialMode` | String | `"standard"` | Initial calculator mode: "standard", "scientific", "programmer", "date", "settings" |
+| `language` | String | `"en"` | Initial language: "en", "zh-cn" |
+| `theme` | String | `"auto"` | Initial theme: "auto", " "light", "dark" |
+| `angleUnit` | String | `"DEG"` | Initial angle unit: "DEG", "RAD", "GRAD" |
+
+### Event Emissions
+
+| Event | Payload | Description |
+|-------|---------|-------------|
+| `mode-change` | `{ mode: String }` | Emitted when calculator mode changes |
+| `language-change` | `{ language: String }` | Emitted when language changes |
+| `theme-change` | `{ theme: String }` | Emitted when theme changes |
+| `calculation` | `{ expression: String, result: String }` | Emitted when a calculation is performed |
+
+### Advanced Usage
+
+```vue
+<template>
+  <div class="calculator-container">
+    <Calculator 
+      :initialMode="'scientific'"
+      :language="'zh-cn'"
+      :theme="'dark'"
+      :angleUnit="'RAD'"
+      @mode-change="handleModeChange"
+      @language-change="handleLanguageChange"
+      @theme-change="handleThemeChange"
+      @calculation="handleCalculation"
+    />
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import Calculator from 'vue3-calculator-ms'
+import 'vue3-calculator-ms/dist/vue3-calculator-ms.css'
+import "katex/dist/katex.min.css";
+
+const handleModeChange = (data) => {
+  console.log('Mode changed:', data.mode)
+}
+
+const handleLanguageChange = (data) => {
+  console.log('Language changed:', data.language)
+}
+
+const handleThemeChange = (data) => {
+  console.log('Theme changed:', data.theme)
+}
+
+const handleCalculation = (data) => {
+  console.log('Calculation performed:', {
+    expression: data.expression,
+    result: data.result
+  })
+}
+</script>
+
+<style scoped>
+.calculator-container {
+  width: 100%;
+  height: 100vh;
+}
+</style>
+```
+
+### Global Configuration
+
+You can also configure the calculator globally when registering it:
+
+```javascript
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import Calculator from 'vue3-calculator-ms'
+import 'vue3-calculator-ms/dist/vue3-calculator-ms.css'
+import "katex/dist/katex.min.css";
+
+const app = createApp(App)
+
+app.use(Calculator, {
+  initialMode: 'standard',
+  language: 'en',
+  theme: 'light',
+  angleUnit: 'DEG',
+})
+
+app.mount('#app')
+```
+
 ## ✅ Implemented Features
 
 - 🎯 **Standard Calculator**: Basic arithmetic operations (+, -, ×, ÷) with decimal support

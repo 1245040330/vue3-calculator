@@ -4,7 +4,7 @@
     <CustomToolbar class="custom-toolbar-box" v-if="customToolbar && customToolbar.length > 0"
       :custom-toolbar="customToolbar" @handle-key-press="handleKeyPress"></CustomToolbar>
     <div class="keyboard-list">
-      <KeyboardButton v-for="item in keyboardList" :is-hover="hoverKeyboardObject[item.keyboard]"
+      <KeyboardButton v-for="item in keyboardList" :is-hover="hoverKeyboardObject[item.keyboard]" :key="item.key"
         :is-active="activeKeyboardObject[item.key]" @click="handleKeyPress(item)">
         <component v-if="renderComponents(item, activeKeyboardObject)"
           :is="renderComponents(item, activeKeyboardObject)"> </component>
@@ -30,6 +30,7 @@ import { useCalculatorStore, } from '@/store'
 import { operatorList, renderKeyboardLabel, renderComponents, backspace, inputDot, evaluate, generateCalculationText, clearEntry, clear, negate, percent, enter, reciprocal, sqr, sqrt, abs, joinOperation, unaryOperation, random, toDMMSS, fromDMMSS } from '@/utils/mathUtil'
 import { keynoardConfig } from '@/config/calculator'
 import popDown from '@/assets/sounds/pop-down.mp3'
+import { calculationResultBus } from "@/eventBus";
 const activeSound = useSound(popDown, { volume: 0.25 })
 const calculatorStore = useCalculatorStore()
 const { vibrate: startVibrate, isSupported: vibrateIsSupported } = useVibrate({ pattern: [200] })
@@ -146,6 +147,7 @@ const handleKeyPress = (key) => {
     const { calculationText: newCalculationText, currentText: newCurrentText } = enter(calculationText.value, currentText.value)
     calculationText.value = newCalculationText
     currentText.value = newCurrentText
+    calculationResultBus.emit({ expression: newCalculationText, result: newCurrentText })
   } else if (value == '.') {
     currentText.value = inputDot(currentText.value)
   } else if (value == 'Backspace') {

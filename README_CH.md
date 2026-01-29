@@ -26,6 +26,146 @@ https://1245040330.github.io/vue3-calculator/
 ### 设置
 ![alt text](https://github.com/1245040330/vue3-calculator/raw/main/src/assets/images/demoSettings.png)
 
+
+## 🧩 组件使用
+
+### 安装
+
+```bash
+npm install vue3-calculator-ms
+# 或
+yarn add vue3-calculator-ms
+```
+
+### 基本使用
+
+```javascript
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import Calculator from 'vue3-calculator-ms'
+import 'vue3-calculator-ms/dist/vue3-calculator-ms.css'
+import "katex/dist/katex.min.css";
+
+const app = createApp(App)
+app.use(Calculator)
+app.mount('#app')
+```
+
+```vue
+<!-- App.vue -->
+<template>
+  <div class="app">
+    <Calculator />
+  </div>
+</template>
+
+<script setup>
+// 如果全局注册，无需导入 Calculator
+</script>
+
+<style>
+.app {
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+```
+
+### 组件属性
+
+| 属性 | 类型 | 默认值 | 描述 |
+|------|------|---------|-------------|
+| `initialMode` | String | `"standard"` | 初始计算器模式："standard"（标准）, "scientific"（科学）, "programmer"（程序员）, "date"（日期） , "settings"（设置） |
+| `language` | String | `"en"` | 初始语言："en"（英文）, "zh-cn"（中文） |
+| `theme` | String | `"auto"` | 初始主题："auto"（自动）, "light"（亮色）, "dark"（深色） |
+| `angleUnit` | String | `"DEG"` | 初始角度单位："DEG"（度）, "RAD"（弧度）, "GRAD"（梯度） |
+
+### 事件触发
+
+| 事件 | 负载 | 描述 |
+|-------|---------|-------------|
+| `mode-change` | `{ mode: String }` | 当计算器模式改变时触发 |
+| `language-change` | `{ language: String }` | 当语言改变时触发 |
+| `theme-change` | `{ theme: String }` | 当主题改变时触发 |
+| `calculation` | `{ expression: String, result: String }` | 当执行计算时触发 |
+
+### 高级使用
+
+```vue
+<template>
+  <div class="calculator-container">
+    <Calculator 
+      :initialMode="'scientific'"
+      :language="'zh-cn'"
+      :theme="'dark'"
+      :angleUnit="'RAD'"
+      @mode-change="handleModeChange"
+      @language-change="handleLanguageChange"
+      @theme-change="handleThemeChange"
+      @calculation="handleCalculation"
+    />
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import Calculator from 'vue3-calculator-ms'
+import 'vue3-calculator-ms/dist/vue3-calculator-ms.css'
+import "katex/dist/katex.min.css";
+
+const handleModeChange = (data) => {
+  console.log('模式改变:', data.mode)
+}
+
+const handleLanguageChange = (data) => {
+  console.log('语言改变:', data.language)
+}
+
+const handleThemeChange = (data) => {
+  console.log('主题改变:', data.theme)
+}
+
+const handleCalculation = (data) => {
+  console.log('执行计算:', {
+    expression: data.expression,
+    result: data.result
+  })
+}
+</script>
+
+<style scoped>
+.calculator-container {
+  width: 100%;
+  height: 100vh;
+}
+</style>
+```
+
+### 全局配置
+
+你也可以在注册时全局配置计算器：
+
+```javascript
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import Calculator from 'vue3-calculator-ms'
+import 'vue3-calculator-ms/dist/vue3-calculator-ms.css'
+import "katex/dist/katex.min.css";
+
+const app = createApp(App)
+
+app.use(Calculator, {
+  initialMode: 'standard',
+  language: 'zh-cn',
+  theme: 'light',
+  angleUnit: 'DEG'
+})
+
+app.mount('#app')
+```
+
 ## ✅ 已实现功能
 
 - 🎯 **标准计算器**：基础算术运算（+、-、×、÷），支持小数
