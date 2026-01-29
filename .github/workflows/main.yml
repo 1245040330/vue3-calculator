@@ -1,0 +1,55 @@
+name: CI/CD Pipeline
+
+on:
+  workflow_dispatch:      # 允许手动点击运行
+    # 你甚至可以添加输入参数，以便在运行时选择版本或分支
+    inputs:
+      reason:
+        description: '发布原因'
+        required: false
+        default: '手动更新版本'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 拉取代码
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. 安装 Node.js 环境
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org/' # 必须指向官方源
+
+      # 3. 安装依赖
+      - name: Install Dependencies
+        run: npm install
+
+      # 4. 执行构建 (Vue 项目生成 dist)
+      - name: Build Project
+        run: npm run build
+
+      # 5. 部署到 GitHub Pages (可选)
+      - name: Upload to Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+
+      # 6. 发布到 NPM (如果 package.json 版本号有变动)
+      - name: Publish to NPM
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # 引用我们存的 Secret
+        continue-on-error: true # 如果版本号没变导致发布失败，允许忽略
