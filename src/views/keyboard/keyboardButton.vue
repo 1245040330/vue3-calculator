@@ -48,6 +48,7 @@ const props = defineProps({
   align-items: center;
   justify-content: center;
   position: relative;
+  font-size: var(--keyboard-font-size);
 
   &.show-before-border:before {
     content: '';
