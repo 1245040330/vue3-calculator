@@ -40,6 +40,7 @@ const changeShowMenu = (value) => {
 </script>
 <style lang="scss" scoped>
 .main-box {
+  container-type: size;
   width: 100%;
   height: 100%;
   padding: 4px;

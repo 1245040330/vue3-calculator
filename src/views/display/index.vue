@@ -61,7 +61,7 @@ onMounted(() => {
   }
 
   .current-text {
-    font-size: clamp(36px, 8vmin, 80px);
+    font-size: clamp(36px, 8cqmin, 80px);
     text-align: right;
   }
 }

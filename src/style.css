@@ -28,7 +28,7 @@
   --radio-check-bg-color: #F4F3F9;
 
   /* 键盘文字大小 - 默认值 */
-  --keyboard-font-size: clamp(14px, 4vmin, 48px);
+  --keyboard-font-size: clamp(14px, 4cqmin, 48px);
 }
 
 html.dark {
