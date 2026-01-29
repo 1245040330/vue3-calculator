@@ -51,7 +51,7 @@ watch(
 watch(
   () => calculatorStore.activeMenu,
   (value) => {
-    emits("mode-change", value);
+    emits("mode-change", value.key);
   }
 );
 watch(mode, (value) => {
@@ -62,29 +62,27 @@ calculationResultBus.on(({ expression, result }) => {
   emits("calculation", { expression, result });
 });
 
-onMounted(() => {
-  if (props.initialMode) {
-    let moreMenuList = treeToArray(keynoardConfig.moreMenuList);
-    let activeMenu = moreMenuList.find((element) => {
-      return element.key == props.initialMode;
-    });
-    if (!activeMenu && props.initialMode == "settings") {
-      activeMenu = { name: "calculator.settings", key: "settings" };
-    }
-    if (activeMenu) {
-      calculatorStore.setActiveMenu(activeMenu);
-    }
+if (props.initialMode) {
+  let moreMenuList = treeToArray(keynoardConfig.moreMenuList);
+  let activeMenu = moreMenuList.find((element) => {
+    return element.key == props.initialMode;
+  });
+  if (!activeMenu && props.initialMode == "settings") {
+    activeMenu = { name: "calculator.settings", key: "settings" };
   }
-  if (props.language) {
-    calculatorStore.setLanguage(props.language);
+  if (activeMenu) {
+    calculatorStore.setActiveMenu(activeMenu);
   }
-  if (props.theme) {
-    mode.value = props.theme;
-  }
-  if (props.angleUnit) {
-    calculatorStore.setAngleUnit(props.angleUnit);
-  }
-});
+}
+if (props.language) {
+  calculatorStore.setLanguage(props.language);
+}
+if (props.theme) {
+  mode.value = props.theme;
+}
+if (props.angleUnit) {
+  calculatorStore.setAngleUnit(props.angleUnit);
+}
 </script>
 
 

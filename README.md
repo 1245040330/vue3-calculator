@@ -76,18 +76,18 @@ app.mount('#app')
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `initialMode` | String | `"standard"` | Initial calculator mode: "standard", "scientific", "programmer", "date", "settings" |
+| `initial-mode` | String | `"standard"` | Initial calculator mode: "standard", "scientific", "programmer", "date", "settings" |
 | `language` | String | `"en"` | Initial language: "en", "zh-cn" |
 | `theme` | String | `"auto"` | Initial theme: "auto", " "light", "dark" |
-| `angleUnit` | String | `"DEG"` | Initial angle unit: "DEG", "RAD", "GRAD" |
+| `angle-unit` | String | `"DEG"` | Initial angle unit: "DEG", "RAD", "GRAD" |
 
 ### Event Emissions
 
 | Event | Payload | Description |
 |-------|---------|-------------|
-| `mode-change` | `{ mode: String }` | Emitted when calculator mode changes |
-| `language-change` | `{ language: String }` | Emitted when language changes |
-| `theme-change` | `{ theme: String }` | Emitted when theme changes |
+| `mode-change` | ` mode: String ` | Emitted when calculator mode changes |
+| `language-change` | ` language: String ` | Emitted when language changes |
+| `theme-change` | ` theme: String ` | Emitted when theme changes |
 | `calculation` | `{ expression: String, result: String }` | Emitted when a calculation is performed |
 
 ### Advanced Usage
@@ -96,10 +96,10 @@ app.mount('#app')
 <template>
   <div class="calculator-container">
     <Calculator 
-      :initialMode="'scientific'"
+      :initial-mode="'scientific'"
       :language="'zh-cn'"
       :theme="'dark'"
-      :angleUnit="'RAD'"
+      :angle-unit="'RAD'"
       @mode-change="handleModeChange"
       @language-change="handleLanguageChange"
       @theme-change="handleThemeChange"
@@ -115,15 +115,15 @@ import 'vue3-calculator-ms/dist/vue3-calculator-ms.css'
 import "katex/dist/katex.min.css";
 
 const handleModeChange = (data) => {
-  console.log('Mode changed:', data.mode)
+  console.log('Mode changed:', data)
 }
 
 const handleLanguageChange = (data) => {
-  console.log('Language changed:', data.language)
+  console.log('Language changed:', data)
 }
 
 const handleThemeChange = (data) => {
-  console.log('Theme changed:', data.theme)
+  console.log('Theme changed:', data)
 }
 
 const handleCalculation = (data) => {

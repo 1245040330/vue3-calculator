@@ -76,18 +76,18 @@ app.mount('#app')
 
 | 属性 | 类型 | 默认值 | 描述 |
 |------|------|---------|-------------|
-| `initialMode` | String | `"standard"` | 初始计算器模式："standard"（标准）, "scientific"（科学）, "programmer"（程序员）, "date"（日期） , "settings"（设置） |
+| `initial-mode` | String | `"standard"` | 初始计算器模式："standard"（标准）, "scientific"（科学）, "programmer"（程序员）, "date"（日期） , "settings"（设置） |
 | `language` | String | `"en"` | 初始语言："en"（英文）, "zh-cn"（中文） |
 | `theme` | String | `"auto"` | 初始主题："auto"（自动）, "light"（亮色）, "dark"（深色） |
-| `angleUnit` | String | `"DEG"` | 初始角度单位："DEG"（度）, "RAD"（弧度）, "GRAD"（梯度） |
+| `angle-unit` | String | `"DEG"` | 初始角度单位："DEG"（度）, "RAD"（弧度）, "GRAD"（梯度） |
 
 ### 事件触发
 
 | 事件 | 负载 | 描述 |
 |-------|---------|-------------|
-| `mode-change` | `{ mode: String }` | 当计算器模式改变时触发 |
-| `language-change` | `{ language: String }` | 当语言改变时触发 |
-| `theme-change` | `{ theme: String }` | 当主题改变时触发 |
+| `mode-change` | ` mode: String ` | 当计算器模式改变时触发 |
+| `language-change` | ` language: String ` | 当语言改变时触发 |
+| `theme-change` | ` theme: String ` | 当主题改变时触发 |
 | `calculation` | `{ expression: String, result: String }` | 当执行计算时触发 |
 
 ### 高级使用
@@ -96,7 +96,7 @@ app.mount('#app')
 <template>
   <div class="calculator-container">
     <Calculator 
-      :initialMode="'scientific'"
+      :initial-mode="'scientific'"
       :language="'zh-cn'"
       :theme="'dark'"
       :angleUnit="'RAD'"
@@ -115,15 +115,15 @@ import 'vue3-calculator-ms/dist/vue3-calculator-ms.css'
 import "katex/dist/katex.min.css";
 
 const handleModeChange = (data) => {
-  console.log('模式改变:', data.mode)
+  console.log('模式改变:', data)
 }
 
 const handleLanguageChange = (data) => {
-  console.log('语言改变:', data.language)
+  console.log('语言改变:', data)
 }
 
 const handleThemeChange = (data) => {
-  console.log('主题改变:', data.theme)
+  console.log('主题改变:', data)
 }
 
 const handleCalculation = (data) => {

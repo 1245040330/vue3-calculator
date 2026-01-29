@@ -225,7 +225,7 @@ export function evaluate(expression) {
     expression = expression.replace(/sec\(([^)]+)\)/g, `sec($1 ${angleUnitObject[calculatorStore.angleUnit]})`);
     expression = expression.replace(/csc\(([^)]+)\)/g, `csc($1 ${angleUnitObject[calculatorStore.angleUnit]})`);
     expression = expression.replace(/cot\(([^)]+)\)/g, `cot($1 ${angleUnitObject[calculatorStore.angleUnit]})`);
-    console.log("expression", expression);
+    // console.log("expression", expression);
 
     //如果存在{_} 占位符，则返回空字符串
     if (expression && expression.includes("{_}")) {
@@ -273,7 +273,7 @@ export function generateCalculationText(historyCalculationText, currentText, ope
         return historyCalculationText = historyCalculationText + operator
     }
     //检查最后一个字符是否为运算符
-    console.log(operatorList.includes(lastChar) && !updateCurremtText, updateCurremtText);
+    // console.log(operatorList.includes(lastChar) && !updateCurremtText, updateCurremtText);
 
     if (operatorList.includes(lastChar) && !updateCurremtText) {
         return historyCalculationText = historyCalculationText.slice(0, -1) + operator;
@@ -322,7 +322,7 @@ export function renderComponents(item, activeKeyboardObject = {}) {
         }
     })
     let selectKeyboardList = getActiveKeyboardList(activeKeyboardObject);
-    console.log(selectKeyboardList, itemData);
+    // console.log(selectKeyboardList, itemData);
 
     if (item[selectKeyboardList.join("")]) {
         itemData = Object.assign({}, item[selectKeyboardList.join("")]);
