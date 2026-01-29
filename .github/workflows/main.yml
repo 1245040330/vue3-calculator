@@ -17,7 +17,9 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       # 1. 拉取代码
       - name: Checkout Code
@@ -45,7 +47,10 @@ jobs:
           path: './dist'
 
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          branch: main
 
       # 6. 发布到 NPM (如果 package.json 版本号有变动)
       - name: Publish to NPM
