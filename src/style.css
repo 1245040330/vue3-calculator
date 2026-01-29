@@ -28,34 +28,8 @@
   --radio-check-bg-color: #F4F3F9;
 
   /* 键盘文字大小 - 默认值 */
-  --keyboard-font-size: 14px;
-
+  --keyboard-font-size: clamp(14px, 4vmin, 48px);
 }
-
-/* 媒体查询 - 屏幕较大时增大键盘文字大小 */
-@media (min-width: 300px) and (min-height: 300px) {
-  :root {
-    --keyboard-font-size: 16px;
-  }
-}
-
-@media (min-width: 800px) and (min-height: 800px) {
-  :root {
-    --keyboard-font-size: 28px;
-  }
-}
-
-@media (min-width: 1000px) and (min-height: 1000px) {
-  :root {
-    --keyboard-font-size: 40px;
-  }
-}
-
-/* @media (min-width: 1920px) and (min-height: 1080px) {
-  :root {
-    --keyboard-font-size: 40px;
-  }
-} */
 
 html.dark {
   /* 深色主题变量 */
