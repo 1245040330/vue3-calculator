@@ -1,12 +1,16 @@
 # Vue3 Scientific Calculator
 
-A modern scientific calculator application built with Vue3 + Vite + MathJS, featuring keyboard support and complex mathematical expression evaluation.
+A modern scientific calculator application built with Vue3 + Vite + MathJS, featuring keyboard support and complex mathematical expression evaluation, inspired by Microsoft Calculator (Windows built-in calculator).
+
+## 📋 Project Overview
+
+This calculator application is designed to mimic the functionality and user experience of Microsoft Calculator, providing a familiar interface with enhanced features for both basic and advanced calculations.
 
 ## 🌐 Demo
 
 https://1245040330.github.io/vue3-calculator/
 
-🌐 **[中文文档](README_CH.md)** | **[English Documentation](README.md)**
+🌐 **[中文文档](https://github.com/1245040330/vue3-calculator/blob/main/README_CH.md)** | **[English Documentation](https://github.com/1245040330/vue3-calculator/blob/main/README.md)**
 
 ## 🧩 screenshot
 

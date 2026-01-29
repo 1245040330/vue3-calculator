@@ -8,6 +8,7 @@ import path from 'path';
 import UnoCSS from '@unocss/vite'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import dts from 'vite-plugin-dts';
+import pkg from './package.json'
 // https://vite.dev/config/
 export default defineConfig({
   base: './',
@@ -15,7 +16,9 @@ export default defineConfig({
     host: "0.0.0.0",
     port: 9528,
   },
-
+  define:{
+    __APP_VERSION__: JSON.stringify(pkg.version),
+  },
   plugins: [vue(),
   createSvgIconsPlugin({
     iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
@@ -28,7 +31,7 @@ export default defineConfig({
   }),
   dts({ insertTypesEntry: true, rollupTypes: true })
   ],
-  build: {
+  build:process.env.NODE_ENV =='lib' ? {
     lib: {
       // 入口文件
       entry: resolve(__dirname, 'src/index.ts'),
@@ -57,7 +60,7 @@ export default defineConfig({
         },
       }
     }
-  },
+  }:undefined,
 
   resolve: {
     alias: {

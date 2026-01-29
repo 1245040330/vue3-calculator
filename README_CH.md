@@ -1,12 +1,16 @@
 # Vue3 科学计算器
 
-一个基于 Vue3 + Vite + MathJS 构建的现代化科学计算器应用，支持键盘操作和复杂数学表达式计算。
+一个基于 Vue3 + Vite + MathJS 构建的现代化科学计算器应用，支持键盘操作和复杂数学表达式计算，灵感来源于 Microsoft Calculator（Windows 系统自带计算器）。
+
+## 📋 项目概述
+
+本计算器应用旨在模仿 Microsoft Calculator 的功能和用户体验，提供熟悉的界面，同时为基础和高级计算提供增强功能。
 
 ## 🌐 在线体验
 
 https://1245040330.github.io/vue3-calculator/
 
-🌐 **[中文文档](README_CH.md)** | **[English Documentation](README.md)**
+🌐 **[中文文档](https://github.com/1245040330/vue3-calculator/blob/main/README_CH.md)** | **[English Documentation](https://github.com/1245040330/vue3-calculator/blob/main/README.md)**
 
 ## 🧩 截图
 
