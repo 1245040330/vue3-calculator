@@ -31,7 +31,7 @@ export default defineConfig({
   }),
   dts({ insertTypesEntry: true, rollupTypes: true })
   ],
-  build:process.env.NODE_ENV =='lib' ? {
+  build:true ? {
     lib: {
       // 入口文件
       entry: resolve(__dirname, 'src/index.ts'),
