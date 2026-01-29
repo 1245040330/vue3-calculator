@@ -223,6 +223,8 @@ import katex from "katex"
 const renderResult = katex.renderToString("x^{2}", { throwOnError: false })
 ```
 
+关于 KaTeX 支持的数学函数和符号的完整列表，请参考 [KaTeX 文档](https://katex.org/docs/supported.html)。
+
 ## 🎨 界面设计
 
 - **显示屏**：显示当前输入和历史记录

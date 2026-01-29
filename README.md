@@ -222,6 +222,8 @@ import katex from "katex"
 const renderResult = katex.renderToString("x^{2}", { throwOnError: false })
 ```
 
+For a complete list of supported mathematical functions and symbols in KaTeX, refer to the [KaTeX Documentation](https://katex.org/docs/supported.html).
+
 ## 🎨 UI Design
 
 - **Display Screen**: Shows current input and calculation history
