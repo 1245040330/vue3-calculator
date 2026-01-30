@@ -37,9 +37,9 @@ onMounted(() => {
 <style lang="scss" scoped>
 .date-calculation {
   overflow: auto;
+  padding: 8px 0;
   .select-box {
     width: fit-content;
-    margin-top: 8px;
   }
 
   .content-box {
