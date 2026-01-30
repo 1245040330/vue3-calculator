@@ -74,6 +74,14 @@ import {
 import { keynoardConfig } from "@/config/calculator";
 import popDown from "@/assets/sounds/pop-down.mp3";
 import { calculationResultBus } from "@/eventBus";
+
+const props = defineProps({
+  handleKeyPress: {
+    type: Function,
+    default: undefined,
+  },
+});
+
 const activeSound = useSound(popDown, { volume: 0.25 });
 const calculatorStore = useCalculatorStore();
 const { vibrate: startVibrate, isSupported: vibrateIsSupported } = useVibrate({
@@ -191,7 +199,10 @@ const handleKeyPress = (key) => {
   });
 
   const value = keyValue || label;
-
+  if (props.handleKeyPress && typeof props.handleKeyPress == "function") {
+    props.handleKeyPress(value);
+    return;
+  }
   if (operatorList.includes(value)) {
     calculationText.value = generateCalculationText(
       calculationText.value,

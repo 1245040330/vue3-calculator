@@ -250,10 +250,11 @@ const formatOutput = (value) => {
     // 如果是复数、矩阵等，format 也能处理
     // precision: 14 是科学计算器的常用设定
     return math.format(value, {
-        precision: 14,
+        notation: 'fixed',
+        precision: 15,
         upperExp: 16, // 超过 10^10 才使用科学计数法
         lowerExp: -16 // 小于 10^-10 才使用科学计数法
-    });
+    }).replace(/\.?0+$/, "");
 };
 
 /**
