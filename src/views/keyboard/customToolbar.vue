@@ -1,5 +1,5 @@
 <template>
-    <div class="custom-toolbar" ref="toolbarRef">
+   <div class="custom-toolbar" ref="toolbarRef">
         <div class="item-box" v-for="(item, index) in customToolbar" :key="item.key || item.name" ref="itemsRef"
             @click="handleClick(item, index)">
             <div class="icon-box">
@@ -10,14 +10,16 @@
             {{ $t(item.name) }}
         </div>
         <div class="button-list" :style="popoverStyle" style="position: fixed; " v-if="showPopover">
-            <KeyboardButton v-for="(itemKeyboard, itemKeyboardIndex) in acitveItemKeybord.keyboardList"
-                v-if="acitveItemKeybord.keyboardList && acitveItemKeybord.keyboardList.length > 0"
-                :is-active="activeKeyboardObject[itemKeyboard.key]" :key="itemKeyboardIndex"
-                @click="handleClickKeyboard(itemKeyboard, index)">
-                <component v-if="renderComponents(itemKeyboard, activeKeyboardObject)"
-                    :is="renderComponents(itemKeyboard, activeKeyboardObject)"> </component>
-                <div v-else v-html="renderKeyboardLabel(itemKeyboard, activeKeyboardObject)"></div>
-            </KeyboardButton>
+            <template v-if="acitveItemKeybord.keyboardList && acitveItemKeybord.keyboardList.length > 0">
+                <KeyboardButton v-for="(itemKeyboard, itemKeyboardIndex) in acitveItemKeybord.keyboardList"
+                    :is-active="activeKeyboardObject[itemKeyboard.key]" :key="itemKeyboardIndex"
+                    @click="handleClickKeyboard(itemKeyboard, index)">
+                    <component v-if="renderComponents(itemKeyboard, activeKeyboardObject)"
+                        :is="renderComponents(itemKeyboard, activeKeyboardObject)"> </component>
+                    <div v-else v-html="renderKeyboardLabel(itemKeyboard, activeKeyboardObject)"></div>
+                </KeyboardButton>
+            </template>
+
         </div>
 
 

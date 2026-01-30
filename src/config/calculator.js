@@ -30,13 +30,14 @@ export const keynoardConfig = {
         {
             name: 'calculator.converter',
             children: [
-                {
-                    name: 'calculator.currency',
-                    disabled: true,
-                },
+                // {
+                //     name: 'calculator.currency',
+                //     disabled: true,
+                // },
                 {
                     name: 'calculator.volume',
-                    disabled: true,
+                    key: 'volume',
+                    disabled: false,
                 },
                 {
                     name: 'calculator.length',
@@ -45,43 +46,53 @@ export const keynoardConfig = {
                 },
                 {
                     name: 'calculator.weightAndMass',
-                    disabled: true,
+                    key: 'weightAndMass',
+                    disabled: false,
                 },
                 {
                     name: 'calculator.temperature',
-                    disabled: true,
+                    key: 'temperature',
+                    disabled: false,
                 },
                 {
                     name: 'calculator.energy',
-                    disabled: true,
+                    key: 'energy',
+                    disabled: false,
                 },
                 {
                     name: 'calculator.area',
-                    disabled: true,
+                    key: 'area',
+                    disabled: false,
                 },
                 {
                     name: 'calculator.speed',
-                    disabled: true,
+                    key: 'speed',
+                    disabled: false,
                 },
                 {
                     name: 'calculator.time',
-                    disabled: true,
+                    key: 'time',
+                    disabled: false,
                 },
                 {
                     name: 'calculator.power',
-                    disabled: true,
+                    key: 'power',
+                    disabled: false,
                 },
                 {
                     name: 'calculator.data',
-                    disabled: true,
+                    key: 'data',
+                    disabled: false,
                 },
                 {
                     name: 'calculator.pressure',
-                    disabled: true,
+                    key: 'pressure',
+                    disabled: false,
                 },
                 {
                     name: 'calculator.angle',
-                    disabled: true,
+                    key: 'angle',
+                    disabled: false,
                 },
 
             ]
@@ -565,7 +576,175 @@ export const keynoardConfig = {
             },
         ]
     },
+    volume: {
+        fromDefaultUnit: 'milliliters',
+        toDefaultUnit: 'liters',
+        unitOptions: [
+            {
+                label: 'volume.milliliters',
+                key: 'milliliters'
+            },
+            {
+                label: 'volume.cubicCentimeters',
+                key: 'cubicCentimeters'
+            },
+            {
+                label: 'volume.liters',
+                key: 'liters'
+            },
+            {
+                label: 'volume.cubicMeters',
+                key: 'cubicMeters'
+            },
+            {
+                label: 'volume.teaspoonsUS',
+                key: 'teaspoonsUS'
+            },
+            {
+                label: 'volume.tablespoonsUS',
+                key: 'tablespoonsUS'
+            },
+            {
+                label: 'volume.fluidOuncesUS',
+                key: 'fluidOuncesUS'
+            },
+            {
+                label: 'volume.cupsUS',
+                key: 'cupsUS'
+            },
+            {
+                label: 'volume.pintsUS',
+                key: 'pintsUS'
+            },
+            {
+                label: 'volume.QuartsUS',
+                key: 'QuartsUS'
+            },
+            {
+                label: 'volume.GallonsUS',
+                key: 'GallonsUS'
+            },
+            {
+                label: 'volume.cubicInches',
+                key: 'cubicInches'
+            },
+            {
+                label: 'volume.cubicFeet',
+                key: 'cubicFeet'
+            },
+            {
+                label: 'volume.cubicYards',
+                key: 'cubicYards'
+            },
+            {
+                label: 'volume.teaspoonsUK',
+                key: 'teaspoonsUK'
+            },
+            {
+                label: 'volume.tablespoonsUK',
+                key: 'tablespoonsUK'
+            },
+            {
+                label: 'volume.fluidOuncesUK',
+                key: 'fluidOuncesUK'
+            },
+            {
+                label: 'volume.pintsUK',
+                key: 'pintsUK'
+            },
+            {
+                label: 'volume.QuartsUK',
+                key: 'QuartsUK'
+            },
+            {
+                label: 'volume.GallonsUK',
+                key: 'GallonsUK'
+            },
+        ],
+        keyboardList: [
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "CE",
+                key: 'Delete'
+            },
+            {
+                latex: "⌫",
+                keyboard: 'Backspace',
+                key: 'Backspace',
+                component: h(
+                    SvgIcon,
+                    {
+                        size: "16px",
+                        name: "back",
+                        color: "var(--text-color)",
+                        style: "padding: 10px 12px",
+                    },
+                    {}
+                ),
+            },
+
+
+            {
+                label: "7",
+                keyboard: 'Numpad7',
+            },
+            {
+                label: "8",
+                keyboard: 'Numpad8',
+            },
+            {
+                label: "9",
+                keyboard: 'Numpad9',
+            },
+
+            {
+                label: "4",
+                keyboard: 'Numpad4',
+            },
+            {
+                label: "5",
+                keyboard: 'Numpad5',
+            },
+            {
+                label: "6",
+                keyboard: 'Numpad6',
+            },
+
+            {
+                label: "1",
+                keyboard: 'Numpad1',
+            },
+            {
+                label: "2",
+                keyboard: 'Numpad2',
+            },
+            {
+                label: "3",
+                keyboard: 'Numpad3',
+            },
+
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "0",
+                keyboard: 'Numpad0',
+            },
+            {
+                label: ".",
+                keyboard: 'Period,NumpadDecimal',
+            },
+        ],
+        rowNumber: 5,
+        columnNumber: 3,
+    },
     length: {
+        fromDefaultUnit: 'angstroms',
+        toDefaultUnit: 'nanometers',
         unitOptions: [
             {
                 label: 'length.angstroms',
@@ -696,5 +875,1264 @@ export const keynoardConfig = {
         ],
         rowNumber: 5,
         columnNumber: 3,
+    },
+    weightAndMass: {
+        fromDefaultUnit: 'kilograms',
+        toDefaultUnit: 'pounds',
+        unitOptions: [
+            {
+                label: 'weightAndMass.carats',
+                key: 'carats'
+            },
+            {
+                label: 'weightAndMass.milligrams',
+                key: 'milligrams'
+            },
+            {
+                label: 'weightAndMass.centigrams',
+                key: 'centigrams'
+            },
+            {
+                label: 'weightAndMass.decigrams',
+                key: 'decigrams'
+            },
+            {
+                label: 'weightAndMass.grams',
+                key: 'grams'
+            },
+            {
+                label: 'weightAndMass.dekagrams',
+                key: 'dekagrams'
+            },
+            {
+                label: 'weightAndMass.hectograms',
+                key: 'hectograms'
+            },
+            {
+                label: 'weightAndMass.kilograms',
+                key: 'kilograms'
+            },
+            {
+                label: 'weightAndMass.metricTonnes',
+                key: 'metricTonnes'
+            },
+            {
+                label: 'weightAndMass.ounces',
+                key: 'ounces'
+            },
+            {
+                label: 'weightAndMass.pounds',
+                key: 'pounds'
+            },
+            {
+                label: 'weightAndMass.stones',
+                key: 'stones'
+            },
+            {
+                label: 'weightAndMass.shortTonsUS',
+                key: 'shortTonsUS'
+            },
+            {
+                label: 'weightAndMass.longTonsUK',
+                key: 'longTonsUK'
+            },
+        ],
+        keyboardList: [
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "CE",
+                key: 'Delete'
+            },
+            {
+                latex: "⌫",
+                keyboard: 'Backspace',
+                key: 'Backspace',
+                component: h(
+                    SvgIcon,
+                    {
+                        size: "16px",
+                        name: "back",
+                        color: "var(--text-color)",
+                        style: "padding: 10px 12px",
+                    },
+                    {}
+                ),
+            },
+
+
+            {
+                label: "7",
+                keyboard: 'Numpad7',
+            },
+            {
+                label: "8",
+                keyboard: 'Numpad8',
+            },
+            {
+                label: "9",
+                keyboard: 'Numpad9',
+            },
+
+            {
+                label: "4",
+                keyboard: 'Numpad4',
+            },
+            {
+                label: "5",
+                keyboard: 'Numpad5',
+            },
+            {
+                label: "6",
+                keyboard: 'Numpad6',
+            },
+
+            {
+                label: "1",
+                keyboard: 'Numpad1',
+            },
+            {
+                label: "2",
+                keyboard: 'Numpad2',
+            },
+            {
+                label: "3",
+                keyboard: 'Numpad3',
+            },
+
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "0",
+                keyboard: 'Numpad0',
+            },
+            {
+                label: ".",
+                keyboard: 'Period,NumpadDecimal',
+            },
+        ],
+        rowNumber: 5,
+        columnNumber: 3,
+    },
+    temperature: {
+        fromDefaultUnit: 'celsius',
+        toDefaultUnit: 'fahrenheit',
+        unitOptions: [
+            {
+                label: 'temperature.celsius',
+                key: 'celsius'
+            },
+            {
+                label: 'temperature.fahrenheit',
+                key: 'fahrenheit'
+            },
+            {
+                label: 'temperature.kelvin',
+                key: 'kelvin'
+            },
+        ],
+        keyboardList: [
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "CE",
+                key: 'Delete'
+            },
+            {
+                latex: "⌫",
+                keyboard: 'Backspace',
+                key: 'Backspace',
+                component: h(
+                    SvgIcon,
+                    {
+                        size: "16px",
+                        name: "back",
+                        color: "var(--text-color)",
+                        style: "padding: 10px 12px",
+                    },
+                    {}
+                ),
+            },
+
+
+            {
+                label: "7",
+                keyboard: 'Numpad7',
+            },
+            {
+                label: "8",
+                keyboard: 'Numpad8',
+            },
+            {
+                label: "9",
+                keyboard: 'Numpad9',
+            },
+
+            {
+                label: "4",
+                keyboard: 'Numpad4',
+            },
+            {
+                label: "5",
+                keyboard: 'Numpad5',
+            },
+            {
+                label: "6",
+                keyboard: 'Numpad6',
+            },
+
+            {
+                label: "1",
+                keyboard: 'Numpad1',
+            },
+            {
+                label: "2",
+                keyboard: 'Numpad2',
+            },
+            {
+                label: "3",
+                keyboard: 'Numpad3',
+            },
+
+            {
+                latex: "^{+}\\!/\\!_{-}",
+                key: 'Negate',
+            },
+            {
+                label: "0",
+                keyboard: 'Numpad0',
+            },
+            {
+                label: ".",
+                keyboard: 'Period,NumpadDecimal',
+            },
+        ],
+        rowNumber: 5,
+        columnNumber: 3,
+    },
+    energy: {
+        fromDefaultUnit: 'foodCalories',
+        toDefaultUnit: 'joules',
+        unitOptions: [
+            {
+                label: 'energy.electronVolts',
+                key: 'electronVolts'
+            },
+            {
+                label: 'energy.joules',
+                key: 'joules'
+            },
+            {
+                label: 'energy.kilojoules',
+                key: 'kilojoules'
+            },
+            {
+                label: 'energy.thermalCalories',
+                key: 'thermalCalories'
+            },
+            {
+                label: 'energy.foodCalories',
+                key: 'foodCalories'
+            },
+            {
+                label: 'energy.footPounds',
+                key: 'footPounds'
+            },
+            {
+                label: 'energy.britishThermalUnits',
+                key: 'britishThermalUnits'
+            },
+            {
+                label: 'energy.kilowattHours',
+                key: 'kilowattHours'
+            },
+        ],
+        keyboardList: [
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "CE",
+                key: 'Delete'
+            },
+            {
+                latex: "⌫",
+                keyboard: 'Backspace',
+                key: 'Backspace',
+                component: h(
+                    SvgIcon,
+                    {
+                        size: "16px",
+                        name: "back",
+                        color: "var(--text-color)",
+                        style: "padding: 10px 12px",
+                    },
+                    {}
+                ),
+            },
+
+
+            {
+                label: "7",
+                keyboard: 'Numpad7',
+            },
+            {
+                label: "8",
+                keyboard: 'Numpad8',
+            },
+            {
+                label: "9",
+                keyboard: 'Numpad9',
+            },
+
+            {
+                label: "4",
+                keyboard: 'Numpad4',
+            },
+            {
+                label: "5",
+                keyboard: 'Numpad5',
+            },
+            {
+                label: "6",
+                keyboard: 'Numpad6',
+            },
+
+            {
+                label: "1",
+                keyboard: 'Numpad1',
+            },
+            {
+                label: "2",
+                keyboard: 'Numpad2',
+            },
+            {
+                label: "3",
+                keyboard: 'Numpad3',
+            },
+
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "0",
+                keyboard: 'Numpad0',
+            },
+            {
+                label: ".",
+                keyboard: 'Period,NumpadDecimal',
+            },
+        ],
+        rowNumber: 5,
+        columnNumber: 3,
+    },
+    area: {
+        fromDefaultUnit: 'squareMeters',
+        toDefaultUnit: 'squareFeet',
+        unitOptions: [
+            {
+                label: 'area.squareMillimeters',
+                key: 'squareMillimeters'
+            },
+            {
+                label: 'area.squareCentimeters',
+                key: 'squareCentimeters'
+            },
+            {
+                label: 'area.squareMeters',
+                key: 'squareMeters'
+            },
+            {
+                label: 'area.hectares',
+                key: 'hectares'
+            },
+            {
+                label: 'area.squareKilometers',
+                key: 'squareKilometers'
+            },
+            {
+                label: 'area.squareInches',
+                key: 'squareInches'
+            },
+            {
+                label: 'area.squareFeet',
+                key: 'squareFeet'
+            },
+            {
+                label: 'area.squareYards',
+                key: 'squareYards'
+            },
+            {
+                label: 'area.acres',
+                key: 'acres'
+            },
+            {
+                label: 'area.squareMiles',
+                key: 'squareMiles'
+            },
+        ],
+        keyboardList: [
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "CE",
+                key: 'Delete'
+            },
+            {
+                latex: "⌫",
+                keyboard: 'Backspace',
+                key: 'Backspace',
+                component: h(
+                    SvgIcon,
+                    {
+                        size: "16px",
+                        name: "back",
+                        color: "var(--text-color)",
+                        style: "padding: 10px 12px",
+                    },
+                    {}
+                ),
+            },
+
+
+            {
+                label: "7",
+                keyboard: 'Numpad7',
+            },
+            {
+                label: "8",
+                keyboard: 'Numpad8',
+            },
+            {
+                label: "9",
+                keyboard: 'Numpad9',
+            },
+
+            {
+                label: "4",
+                keyboard: 'Numpad4',
+            },
+            {
+                label: "5",
+                keyboard: 'Numpad5',
+            },
+            {
+                label: "6",
+                keyboard: 'Numpad6',
+            },
+
+            {
+                label: "1",
+                keyboard: 'Numpad1',
+            },
+            {
+                label: "2",
+                keyboard: 'Numpad2',
+            },
+            {
+                label: "3",
+                keyboard: 'Numpad3',
+            },
+
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "0",
+                keyboard: 'Numpad0',
+            },
+            {
+                label: ".",
+                keyboard: 'Period,NumpadDecimal',
+            },
+        ],
+        rowNumber: 5,
+        columnNumber: 3,
+    },
+    speed: {
+        fromDefaultUnit: 'kilometersPerHour',
+        toDefaultUnit: 'milesPerHour',
+        unitOptions: [
+            {
+                label: 'speed.centimetersPerSecond',
+                key: 'centimetersPerSecond'
+            },
+            {
+                label: 'speed.metersPerSecond',
+                key: 'metersPerSecond'
+            },
+            {
+                label: 'speed.kilometersPerHour',
+                key: 'kilometersPerHour'
+            },
+            {
+                label: 'speed.feetPerSecond',
+                key: 'feetPerSecond'
+            },
+            {
+                label: 'speed.milesPerHour',
+                key: 'milesPerHour'
+            },
+            {
+                label: 'speed.knots',
+                key: 'knots'
+            },
+            {
+                label: 'speed.mach',
+                key: 'mach'
+            },
+        ],
+        keyboardList: [
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "CE",
+                key: 'Delete'
+            },
+            {
+                latex: "⌫",
+                keyboard: 'Backspace',
+                key: 'Backspace',
+                component: h(
+                    SvgIcon,
+                    {
+                        size: "16px",
+                        name: "back",
+                        color: "var(--text-color)",
+                        style: "padding: 10px 12px",
+                    },
+                    {}
+                ),
+            },
+
+
+            {
+                label: "7",
+                keyboard: 'Numpad7',
+            },
+            {
+                label: "8",
+                keyboard: 'Numpad8',
+            },
+            {
+                label: "9",
+                keyboard: 'Numpad9',
+            },
+
+            {
+                label: "4",
+                keyboard: 'Numpad4',
+            },
+            {
+                label: "5",
+                keyboard: 'Numpad5',
+            },
+            {
+                label: "6",
+                keyboard: 'Numpad6',
+            },
+
+            {
+                label: "1",
+                keyboard: 'Numpad1',
+            },
+            {
+                label: "2",
+                keyboard: 'Numpad2',
+            },
+            {
+                label: "3",
+                keyboard: 'Numpad3',
+            },
+
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "0",
+                keyboard: 'Numpad0',
+            },
+            {
+                label: ".",
+                keyboard: 'Period,NumpadDecimal',
+            },
+        ],
+        rowNumber: 5,
+        columnNumber: 3,
+    },
+    time: {
+        fromDefaultUnit: 'minutes',
+        toDefaultUnit: 'hours',
+        unitOptions: [
+            {
+                label: 'time.microseconds',
+                key: 'microseconds'
+            },
+            {
+                label: 'time.milliseconds',
+                key: 'milliseconds'
+            },
+            {
+                label: 'time.seconds',
+                key: 'seconds'
+            },
+            {
+                label: 'time.minutes',
+                key: 'minutes'
+            },
+            {
+                label: 'time.hours',
+                key: 'hours'
+            },
+            {
+                label: 'time.days',
+                key: 'days'
+            },
+            {
+                label: 'time.weeks',
+                key: 'weeks'
+            },
+            {
+                label: 'time.years',
+                key: 'years'
+            },
+        ],
+        keyboardList: [
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "CE",
+                key: 'Delete'
+            },
+            {
+                latex: "⌫",
+                keyboard: 'Backspace',
+                key: 'Backspace',
+                component: h(
+                    SvgIcon,
+                    {
+                        size: "16px",
+                        name: "back",
+                        color: "var(--text-color)",
+                        style: "padding: 10px 12px",
+                    },
+                    {}
+                ),
+            },
+
+
+            {
+                label: "7",
+                keyboard: 'Numpad7',
+            },
+            {
+                label: "8",
+                keyboard: 'Numpad8',
+            },
+            {
+                label: "9",
+                keyboard: 'Numpad9',
+            },
+
+            {
+                label: "4",
+                keyboard: 'Numpad4',
+            },
+            {
+                label: "5",
+                keyboard: 'Numpad5',
+            },
+            {
+                label: "6",
+                keyboard: 'Numpad6',
+            },
+
+            {
+                label: "1",
+                keyboard: 'Numpad1',
+            },
+            {
+                label: "2",
+                keyboard: 'Numpad2',
+            },
+            {
+                label: "3",
+                keyboard: 'Numpad3',
+            },
+
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "0",
+                keyboard: 'Numpad0',
+            },
+            {
+                label: ".",
+                keyboard: 'Period,NumpadDecimal',
+            },
+        ],
+        rowNumber: 5,
+        columnNumber: 3,
+    },
+    power: {
+        fromDefaultUnit: 'horsepowerUS',
+        toDefaultUnit: 'kilowatts',
+        unitOptions: [
+            {
+                label: 'power.watts',
+                key: 'watts'
+            },
+            {
+                label: 'power.kilowatts',
+                key: 'kilowatts'
+            },
+            {
+                label: 'power.horsepowerUS',
+                key: 'horsepowerUS'
+            },
+            {
+                label: 'power.footPoundsMinute',
+                key: 'footPoundsMinute'
+            },
+            {
+                label: 'power.btusMinute',
+                key: 'btusMinute'
+            },
+        ],
+        keyboardList: [
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "CE",
+                key: 'Delete'
+            },
+            {
+                latex: "⌫",
+                keyboard: 'Backspace',
+                key: 'Backspace',
+                component: h(
+                    SvgIcon,
+                    {
+                        size: "16px",
+                        name: "back",
+                        color: "var(--text-color)",
+                        style: "padding: 10px 12px",
+                    },
+                    {}
+                ),
+            },
+
+
+            {
+                label: "7",
+                keyboard: 'Numpad7',
+            },
+            {
+                label: "8",
+                keyboard: 'Numpad8',
+            },
+            {
+                label: "9",
+                keyboard: 'Numpad9',
+            },
+
+            {
+                label: "4",
+                keyboard: 'Numpad4',
+            },
+            {
+                label: "5",
+                keyboard: 'Numpad5',
+            },
+            {
+                label: "6",
+                keyboard: 'Numpad6',
+            },
+
+            {
+                label: "1",
+                keyboard: 'Numpad1',
+            },
+            {
+                label: "2",
+                keyboard: 'Numpad2',
+            },
+            {
+                label: "3",
+                keyboard: 'Numpad3',
+            },
+
+            {
+                latex: "^{+}\\!/\\!_{-}",
+                key: 'Negate',
+            },
+            {
+                label: "0",
+                keyboard: 'Numpad0',
+            },
+            {
+                label: ".",
+                keyboard: 'Period,NumpadDecimal',
+            },
+        ],
+        rowNumber: 5,
+        columnNumber: 3,
+    },
+    data: {
+        fromDefaultUnit: 'megabytes',
+        toDefaultUnit: 'gigabytes',
+        unitOptions: [
+            {
+                label: 'data.bits',
+                key: 'bits'
+            },
+            {
+                label: 'data.nibble',
+                key: 'nibble'
+            },
+            {
+                label: 'data.bytes',
+                key: 'bytes'
+            },
+            {
+                label: 'data.kilobits',
+                key: 'kilobits'
+            },
+            {
+                label: 'data.kibibits',
+                key: 'kibibits'
+            },
+            {
+                label: 'data.kilobytes',
+                key: 'kilobytes'
+            },
+            {
+                label: 'data.kibibytes',
+                key: 'kibibytes'
+            },
+            {
+                label: 'data.megabits',
+                key: 'megabits'
+            },
+            {
+                label: 'data.mebibits',
+                key: 'mebibits'
+            },
+            {
+                label: 'data.megabytes',
+                key: 'megabytes'
+            },
+            {
+                label: 'data.mebibytes',
+                key: 'mebibytes'
+            },
+            {
+                label: 'data.gigabits',
+                key: 'gigabits'
+            },
+            {
+                label: 'data.gibibits',
+                key: 'gibibits'
+            },
+            {
+                label: 'data.gigabytes',
+                key: 'gigabytes'
+            },
+            {
+                label: 'data.gibibytes',
+                key: 'gibibytes'
+            },
+            {
+                label: 'data.terabits',
+                key: 'terabits'
+            },
+            {
+                label: 'data.tebibits',
+                key: 'tebibits'
+            },
+            {
+                label: 'data.terabytes',
+                key: 'terabytes'
+            },
+            {
+                label: 'data.tebibytes',
+                key: 'tebibytes'
+            },
+            {
+                label: 'data.petabits',
+                key: 'petabits'
+            },
+            {
+                label: 'data.pebibits',
+                key: 'pebibits'
+            },
+            {
+                label: 'data.petabytes',
+                key: 'petabytes'
+            },
+            {
+                label: 'data.pebibytes',
+                key: 'pebibytes'
+            },
+            {
+                label: 'data.exabits',
+                key: 'exabits'
+            },
+            {
+                label: 'data.exbibits',
+                key: 'exbibits'
+            },
+            {
+                label: 'data.exabytes',
+                key: 'exabytes'
+            },
+            {
+                label: 'data.exbibytes',
+                key: 'exbibytes'
+            },
+            {
+                label: 'data.zetabits',
+                key: 'zetabits'
+            },
+            {
+                label: 'data.zebibits',
+                key: 'zebibits'
+            },
+            {
+                label: 'data.zetabytes',
+                key: 'zetabytes'
+            },
+            {
+                label: 'data.zebibytes',
+                key: 'zebibytes'
+            },
+            {
+                label: 'data.yottabits',
+                key: 'yottabits'
+            },
+            {
+                label: 'data.yobibits',
+                key: 'yobibits'
+            },
+            {
+                label: 'data.yottabytes',
+                key: 'yottabytes'
+            },
+            {
+                label: 'data.yobibytes',
+                key: 'yobibytes'
+            },
+
+        ],
+        keyboardList: [
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "CE",
+                key: 'Delete'
+            },
+            {
+                latex: "⌫",
+                keyboard: 'Backspace',
+                key: 'Backspace',
+                component: h(
+                    SvgIcon,
+                    {
+                        size: "16px",
+                        name: "back",
+                        color: "var(--text-color)",
+                        style: "padding: 10px 12px",
+                    },
+                    {}
+                ),
+            },
+
+
+            {
+                label: "7",
+                keyboard: 'Numpad7',
+            },
+            {
+                label: "8",
+                keyboard: 'Numpad8',
+            },
+            {
+                label: "9",
+                keyboard: 'Numpad9',
+            },
+
+            {
+                label: "4",
+                keyboard: 'Numpad4',
+            },
+            {
+                label: "5",
+                keyboard: 'Numpad5',
+            },
+            {
+                label: "6",
+                keyboard: 'Numpad6',
+            },
+
+            {
+                label: "1",
+                keyboard: 'Numpad1',
+            },
+            {
+                label: "2",
+                keyboard: 'Numpad2',
+            },
+            {
+                label: "3",
+                keyboard: 'Numpad3',
+            },
+
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "0",
+                keyboard: 'Numpad0',
+            },
+            {
+                label: ".",
+                keyboard: 'Period,NumpadDecimal',
+            },
+        ],
+        rowNumber: 5,
+        columnNumber: 3,
+    },
+    pressure: {
+        fromDefaultUnit: 'bars',
+        toDefaultUnit: 'atmospheres',
+        unitOptions: [
+            {
+                label: 'pressure.atmospheres',
+                key: 'atmospheres'
+            },
+            {
+                label: 'pressure.bars',
+                key: 'bars'
+            },
+            {
+                label: 'pressure.kilopascals',
+                key: 'kilopascals'
+            },
+            {
+                label: 'pressure.millimetersOfMercury',
+                key: 'millimetersOfMercury'
+            },
+            {
+                label: 'pressure.pascals',
+                key: 'pascals'
+            },
+            {
+                label: 'pressure.poundsPerSquareInch',
+                key: 'poundsPerSquareInch'
+            },
+
+        ],
+        keyboardList: [
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "CE",
+                key: 'Delete'
+            },
+            {
+                latex: "⌫",
+                keyboard: 'Backspace',
+                key: 'Backspace',
+                component: h(
+                    SvgIcon,
+                    {
+                        size: "16px",
+                        name: "back",
+                        color: "var(--text-color)",
+                        style: "padding: 10px 12px",
+                    },
+                    {}
+                ),
+            },
+
+
+            {
+                label: "7",
+                keyboard: 'Numpad7',
+            },
+            {
+                label: "8",
+                keyboard: 'Numpad8',
+            },
+            {
+                label: "9",
+                keyboard: 'Numpad9',
+            },
+
+            {
+                label: "4",
+                keyboard: 'Numpad4',
+            },
+            {
+                label: "5",
+                keyboard: 'Numpad5',
+            },
+            {
+                label: "6",
+                keyboard: 'Numpad6',
+            },
+
+            {
+                label: "1",
+                keyboard: 'Numpad1',
+            },
+            {
+                label: "2",
+                keyboard: 'Numpad2',
+            },
+            {
+                label: "3",
+                keyboard: 'Numpad3',
+            },
+
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "0",
+                keyboard: 'Numpad0',
+            },
+            {
+                label: ".",
+                keyboard: 'Period,NumpadDecimal',
+            },
+        ],
+        rowNumber: 5,
+        columnNumber: 3,
+    },
+    angle: {
+        fromDefaultUnit: 'radians',
+        toDefaultUnit: 'degrees',
+        unitOptions: [
+            {
+                label: 'angle.degrees',
+                key: 'degrees'
+            },
+            {
+                label: 'angle.radians',
+                key: 'radians'
+            },
+            {
+                label: 'angle.gradians',
+                key: 'gradians'
+            },
+        ],
+        keyboardList: [
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "CE",
+                key: 'Delete'
+            },
+            {
+                latex: "⌫",
+                keyboard: 'Backspace',
+                key: 'Backspace',
+                component: h(
+                    SvgIcon,
+                    {
+                        size: "16px",
+                        name: "back",
+                        color: "var(--text-color)",
+                        style: "padding: 10px 12px",
+                    },
+                    {}
+                ),
+            },
+
+
+            {
+                label: "7",
+                keyboard: 'Numpad7',
+            },
+            {
+                label: "8",
+                keyboard: 'Numpad8',
+            },
+            {
+                label: "9",
+                keyboard: 'Numpad9',
+            },
+
+            {
+                label: "4",
+                keyboard: 'Numpad4',
+            },
+            {
+                label: "5",
+                keyboard: 'Numpad5',
+            },
+            {
+                label: "6",
+                keyboard: 'Numpad6',
+            },
+
+            {
+                label: "1",
+                keyboard: 'Numpad1',
+            },
+            {
+                label: "2",
+                keyboard: 'Numpad2',
+            },
+            {
+                label: "3",
+                keyboard: 'Numpad3',
+            },
+
+            {
+                latex: "^{+}\\!/\\!_{-}",
+                key: 'Negate',
+            },
+            {
+                label: "0",
+                keyboard: 'Numpad0',
+            },
+            {
+                label: ".",
+                keyboard: 'Period,NumpadDecimal',
+            },
+        ],
+        rowNumber: 5,
+        columnNumber: 3,
     }
+
 }

@@ -5,7 +5,7 @@
         <div class="menu-list">
             <div class="sub-menu" v-for="item in moreList" :key="item.name">
                 <div class="menu-item group-name"> {{ $t(item.name) }}</div>
-                <div class="menu-item" v-for="child in item.children" :key="child.name" :class="getMenuItemClass(child)"
+                <div class="menu-item" style="padding-left: 24px" v-for="child in item.children" :key="child.name" :class="getMenuItemClass(child)"
                     @click="handleClick(child)"> {{ $t(child.name) }}</div>
             </div>
         </div>

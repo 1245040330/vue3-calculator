@@ -182,6 +182,10 @@ app.mount('#app')
 
 ## 📝 Update log
 
+### v1.1.11 (2026-01-30)
+-Conversion type support preview (conversion function not yet implemented)
+-Optimization of menu hierarchy distance for switching mode pages
+
 ### v1.1.10 (2026-01-30)
 - New component properties: 'height', 'width'`
 - Support `import {Calculator} from 'vue3-calculator-ms'` to reference components
