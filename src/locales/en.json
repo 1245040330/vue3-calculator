@@ -40,6 +40,20 @@
 		"trigonometry":"Trigonometry",
         "function":"Function"
 	},
+	"length": {
+		"angstroms": "Angstroms",
+        "nanometers":"Nanometers",
+        "microns":"Microns",
+        "millimeters":"Millimeters",
+        "centimeters":"Centimeters",
+        "meters":"Meters",
+        "kilometers":"Kilometers",
+        "inches":"Inches",
+        "feet":"Feet",
+        "yards":"Yards",
+        "miles":"Miles",
+        "nauticalMiles":"Nautical miles"
+	},
     "settings":{
         "appearance":"Appearance",
         "appTheme":"App theme",

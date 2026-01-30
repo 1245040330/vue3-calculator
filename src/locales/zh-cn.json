@@ -40,6 +40,20 @@
 		"trigonometry": "三角学",
 		"function": "函数"
 	},
+	"length": {
+		"angstroms": "埃",
+		"nanometers":"纳米",
+        "microns":"微米",
+        "millimeters":"毫米",
+        "centimeters":"厘米",
+        "meters":"米",
+        "kilometers":"公里",
+        "inches":"英寸",
+        "feet":"英尺",
+        "yards":"码",
+        "miles":"英里",
+        "nauticalMiles":"海里"
+	},
 	"settings": {
 		"appearance": "外观",
 		"appTheme": "应用程序主题",

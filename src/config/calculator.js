@@ -40,7 +40,8 @@ export const keynoardConfig = {
                 },
                 {
                     name: 'calculator.length',
-                    disabled: true,
+                    key: 'length',
+                    disabled: false,
                 },
                 {
                     name: 'calculator.weightAndMass',
@@ -564,4 +565,136 @@ export const keynoardConfig = {
             },
         ]
     },
+    length: {
+        unitOptions: [
+            {
+                label: 'length.angstroms',
+                key: 'angstroms'
+            },
+            {
+                label: 'length.nanometers',
+                key: 'nanometers'
+            },
+            {
+                label: 'length.microns',
+                key: 'microns'
+            },
+            {
+                label: 'length.millimeters',
+                key: 'millimeters'
+            },
+            {
+                label: 'length.centimeters',
+                key: 'centimeters'
+            },
+            {
+                label: 'length.meters',
+                key: 'meters'
+            },
+            {
+                label: 'length.kilometers',
+                key: 'kilometers'
+            },
+            {
+                label: 'length.inches',
+                key: 'inches'
+            },
+            {
+                label: 'length.feet',
+                key: 'feet'
+            },
+            {
+                label: 'length.yards',
+                key: 'yards'
+            },
+            {
+                label: 'length.miles',
+                key: 'miles'
+            },
+            {
+                label: 'length.nauticalMiles',
+                key: 'nauticalMiles'
+            },
+        ],
+        keyboardList: [
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "CE",
+                key: 'Delete'
+            },
+            {
+                latex: "⌫",
+                keyboard: 'Backspace',
+                key: 'Backspace',
+                component: h(
+                    SvgIcon,
+                    {
+                        size: "16px",
+                        name: "back",
+                        color: "var(--text-color)",
+                        style: "padding: 10px 12px",
+                    },
+                    {}
+                ),
+            },
+
+
+            {
+                label: "7",
+                keyboard: 'Numpad7',
+            },
+            {
+                label: "8",
+                keyboard: 'Numpad8',
+            },
+            {
+                label: "9",
+                keyboard: 'Numpad9',
+            },
+
+            {
+                label: "4",
+                keyboard: 'Numpad4',
+            },
+            {
+                label: "5",
+                keyboard: 'Numpad5',
+            },
+            {
+                label: "6",
+                keyboard: 'Numpad6',
+            },
+
+            {
+                label: "1",
+                keyboard: 'Numpad1',
+            },
+            {
+                label: "2",
+                keyboard: 'Numpad2',
+            },
+            {
+                label: "3",
+                keyboard: 'Numpad3',
+            },
+
+            {
+                label: "",
+                hidden: true,
+            },
+            {
+                label: "0",
+                keyboard: 'Numpad0',
+            },
+            {
+                label: ".",
+                keyboard: 'Period,NumpadDecimal',
+            },
+        ],
+        rowNumber: 5,
+        columnNumber: 3,
+    }
 }

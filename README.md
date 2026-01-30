@@ -171,6 +171,8 @@ app.mount('#app')
 - 🎯 **Standard Calculator**: Basic arithmetic operations (+, -, ×, ÷) with decimal support
 - 🔬 **Scientific Calculator**: Advanced mathematical functions including trigonometry, logarithms, and exponentials
 - 📅 **Date Calculation**: Date difference calculation and date addition/subtraction functionality
+- 📏 **Length Converter**: Convert between different length units
+-  ⚙  **Settings**: Customizable calculator preferences including theme, language, and angle unit functionality
 
 ## 🗒️ Todo Items
 
@@ -179,7 +181,6 @@ app.mount('#app')
 - [ ] **Programmer Calculator**: Binary, octal, hexadecimal conversions and operations
 - [ ] **Currency Converter**: Real-time currency exchange rates and conversions
 - [ ] **Volume Converter**: Convert between different volume units
-- [ ] **Length Converter**: Convert between different length units
 - [ ] **Weight Converter**: Convert between different weight units
 - [ ] **Temperature Converter**: Convert between Celsius, Fahrenheit, Kelvin, etc.
 - [ ] **Energy Converter**: Convert between different energy units
