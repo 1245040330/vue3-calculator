@@ -1,109 +1,48 @@
 <template>
-    <div class="date-calculation">
-        <div class="popover-box" ref="popoverRef">
-            <div class="popover-button" ref="popoverButtonRef" @click="handleClick()">
-                {{ $t(activePopoverButton.label||'')||activePopoverButton.label  }}<SvgIcon name="downwardArrow" size="14px" style="margin-left: 4px;"></SvgIcon>
-            </div>
-            <div class="button-list" :style="popoverStyle" style="position: fixed; " v-if="showPopover">
-                <KeyboardButton v-for="(itemKeyboard, itemKeyboardIndex) in keyboardList"
-                    active-keyboard-color="var(--btn-hover)"
-                    :is-active="activePopoverButton.key == (itemKeyboard.key || itemKeyboard.label)"
-                    :key="itemKeyboardIndex" @click="handleClickKeyboard(itemKeyboard, index)" style="padding: 4px 8px"
-                    :show-before-border="true">
-                    <div>{{ $t(itemKeyboard.label )}}</div>
-                </KeyboardButton>
-            </div>
-        </div>
-        <div class="content-box">
-            <AddSubDays v-if="activePopoverButton.key == 'AddSubDays'"></AddSubDays>
-            <DiffDates v-if="activePopoverButton.key == 'DiffDates'"></DiffDates>
-        </div>
-
+  <div class="date-calculation">
+    <Select
+      class="select-box"
+      v-model="activePopoverButton"
+      :options="keyboardList"
+      value-field="key"
+      popover-height="80px"
+    ></Select>
+    <div class="content-box">
+      <AddSubDays v-if="activePopoverButton == 'AddSubDays'"></AddSubDays>
+      <DiffDates v-if="activePopoverButton == 'DiffDates'"></DiffDates>
     </div>
+  </div>
 </template>
 <script setup>
-import { onMounted,ref, useTemplateRef, computed } from 'vue'
-import { useCalculatorStore } from '@/store'
-import { keynoardConfig } from '@/config/calculator'
-import { useElementBounding, onClickOutside } from '@vueuse/core'
-import KeyboardButton from "@/views/keyboard/keyboardButton.vue";
+import { onMounted, ref, computed } from "vue";
+import { useCalculatorStore } from "@/store";
+import { keynoardConfig } from "@/config/calculator";
 import AddSubDays from "@/views/dateCalculation/addSubDays.vue";
 import DiffDates from "@/views/dateCalculation/diffDates.vue";
-const calculatorStore = useCalculatorStore()
-const popoverButtonRef = useTemplateRef("popoverButtonRef")
-const popoverRef = useTemplateRef("popoverRef")
-const activePopoverButton = ref({
-});
-const showPopover = ref(false)
-const popoverStyle = ref({
-    label:''
-})
+import Select from "@/components/select/index.vue";
+const calculatorStore = useCalculatorStore();
+const activePopoverButton = ref("");
 
 const activeKeynoard = computed(() => {
-    return keynoardConfig[calculatorStore.activeMenu.key] || {}
-})
+  return keynoardConfig[calculatorStore.activeMenu.key] || {};
+});
 const keyboardList = computed(() => {
-    return activeKeynoard.value.keyboardList || []
-})
-onClickOutside(popoverRef, event => {
-    showPopover.value = false;
-})
-onMounted(()=>{
-    activePopoverButton.value = keyboardList.value[0]||{}
-})
-
-const handleClick = () => {
-    const { x, y, top, right, bottom, left, width, height }
-        = useElementBounding(popoverButtonRef)
-    popoverStyle.value = {
-        left: 0 + 'px',
-        top: (y.value) + 'px',
-    }
-    showPopover.value = true;
-}
-const handleClickKeyboard = (item, index) => {
-    activePopoverButton.value = item;
-    showPopover.value = false;
-}
+  return activeKeynoard.value.keyboardList || [];
+});
+onMounted(() => {
+  activePopoverButton.value = keyboardList.value[0]?.key || "";
+});
 </script>
 <style lang="scss" scoped>
 .date-calculation {
-    overflow: auto;
+  overflow: auto;
+  .select-box {
+    width: 200px;
+  }
 
-    .popover-box {
-        .popover-button {
-            width: fit-content;
-            padding: 4px 8px;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            &:hover {
-                background-color: var(--bg-2-color);
-            }
-
-            .icon-box {
-                display: flex;
-                align-items: center;
-            }
-        }
-
-        .button-list {
-            background-color: var(--popover-bg-color);
-            border-radius: 8px;
-            width: fit-content;
-            max-width: 95vw;
-            padding: 4px;
-            z-index: 8;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-
-        }
-    }
-
-    .content-box {
-        height: calc(100% - 32px);
-        padding: 8px;
-    }
+  .content-box {
+    height: calc(100% - 32px);
+    padding: 8px;
+  }
 }
 </style>
