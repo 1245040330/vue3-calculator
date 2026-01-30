@@ -55,9 +55,13 @@
     "vue": "^3.0.0"
   },
   "keywords": [
-    "vue",
-    "vue3",
     "calculator",
+    "vueCalculator",
+    "vue3Calculator",
+    "vuecalculator",
+    "vue3calculator",
+    "webCalculator",
+    "h5Calculator",
     "component"
   ],
   "author": "fengjie",
