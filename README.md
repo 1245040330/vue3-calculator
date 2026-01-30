@@ -174,6 +174,19 @@ app.mount('#app')
 - 📏 **Length Converter**: Convert between different length units
 -  ⚙  **Settings**: Customizable calculator preferences including theme, language, and angle unit functionality
 
+## 📝 Update log
+
+### v1.1.9 (2026-01-30)
+- Add length converter functionality
+- Optimize select component
+
+### v1.1.8 (2026-01-29)
+- Add responsive font size and spacing system
+- Improve the adaptive layout of keyboard buttons
+- Optimize display effect on large screens
+- Add component props: `angle-unit`, `theme`, `language`, `initial-mode`
+- Add event emits: `mode-change`, `language-change`, `theme-change`, `calculation`
+
 ## 🗒️ Todo Items
 
 ### Features to Implement
