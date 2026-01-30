@@ -20,7 +20,7 @@ import { useCalculatorStore } from "@/store";
 import { keynoardConfig } from "@/config/calculator";
 import AddSubDays from "@/views/dateCalculation/addSubDays.vue";
 import DiffDates from "@/views/dateCalculation/diffDates.vue";
-import Select from "@/components/select/index.vue";
+import Select from "@/components/Select/index.vue";
 const calculatorStore = useCalculatorStore();
 const activePopoverButton = ref("");
 

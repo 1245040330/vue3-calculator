@@ -31,7 +31,7 @@
 </template>
 <script setup>
 import { computed, ref, watch } from "vue";
-import Select from "@/components/select/index.vue";
+import Select from "@/components/Select/index.vue";
 import NumberDisplay from "@/views/display/number.vue";
 import Keyboard from "@/views/keyboard/index.vue";
 import { keynoardConfig } from "@/config/calculator";
