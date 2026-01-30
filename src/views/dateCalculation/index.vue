@@ -6,6 +6,7 @@
       :options="keyboardList"
       value-field="key"
       popover-height="80px"
+      popover-width="fit-content"
     ></Select>
     <div class="content-box">
       <AddSubDays v-if="activePopoverButton == 'AddSubDays'"></AddSubDays>
@@ -37,7 +38,8 @@ onMounted(() => {
 .date-calculation {
   overflow: auto;
   .select-box {
-    width: 200px;
+    width: fit-content;
+    margin-top: 8px;
   }
 
   .content-box {

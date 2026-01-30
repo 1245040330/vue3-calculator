@@ -43,6 +43,10 @@ const props = defineProps({
     type: String,
     default: "200px",
   },
+  popoverWidth: {
+    type: String,
+    default: undefined,
+  },
   labelField: {
     type: String,
     default: "label",
@@ -84,7 +88,7 @@ const openPopup = () => {
     left: x.value + "px",
     top: y.value + height.value + 2 + "px",
     height: props.popoverHeight,
-    width: width.value + "px",
+    width: props.popoverWidth ? props.popoverWidth : width.value + "px",
   };
   showPopover.value = true;
   nextTick(() => {
@@ -127,8 +131,8 @@ const updateValue = (item) => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 16px;
-
+  padding: 4px 16px;
+  font-size: 14px;
   &:hover {
     background-color: var(--btn-bg);
   }
