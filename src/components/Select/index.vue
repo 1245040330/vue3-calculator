@@ -89,6 +89,7 @@ const openPopup = () => {
     top: y.value + height.value + 2 + "px",
     height: props.popoverHeight,
     width: props.popoverWidth ? props.popoverWidth : width.value + "px",
+    minWidth: props.popoverWidth ? width.value + "px" : undefined,
   };
   showPopover.value = true;
   nextTick(() => {
