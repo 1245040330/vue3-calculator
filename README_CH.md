@@ -80,6 +80,8 @@ app.mount('#app')
 | `language` | String | `"en"` | 初始语言："en"（英文）, "zh-cn"（中文） |
 | `theme` | String | `"auto"` | 初始主题："auto"（自动）, "light"（亮色）, "dark"（深色） |
 | `angle-unit` | String | `"DEG"` | 初始角度单位："DEG"（度）, "RAD"（弧度）, "GRAD"（梯度） |
+| `height` | String | `"100%""` | 计算器高度 |
+| `width` | String | `"100%""` | 计算器宽度 |
 
 ### 事件触发
 
@@ -100,6 +102,8 @@ app.mount('#app')
       :language="'zh-cn'"
       :theme="'dark'"
       :angleUnit="'RAD'"
+      :height="'460px'"
+      :width="'320px'"
       @mode-change="handleModeChange"
       @language-change="handleLanguageChange"
       @theme-change="handleThemeChange"
@@ -110,7 +114,7 @@ app.mount('#app')
 
 <script setup>
 import { ref } from 'vue'
-import Calculator from 'vue3-calculator-ms'
+import {Calculator} from 'vue3-calculator-ms'
 import 'vue3-calculator-ms/dist/vue3-calculator-ms.css'
 import "katex/dist/katex.min.css";
 
@@ -160,7 +164,9 @@ app.use(Calculator, {
   initialMode: 'standard',
   language: 'zh-cn',
   theme: 'light',
-  angleUnit: 'DEG'
+  angleUnit: 'DEG',
+  height: '460px',
+  width: '320px',
 })
 
 app.mount('#app')
@@ -175,6 +181,11 @@ app.mount('#app')
 -  ⚙  **设置**：自定义计算器偏好设置，包括主题、语言和角度单位功能
 
 ## 📝 更新记录
+
+### v1.1.10 (2026-01-30)
+- 新增组件属性：`height`（计算器高度）, `width`（计算器宽度）
+- 支持 `import {Calculator} from 'vue3-calculator-ms'` 引用组件
+- 组件新增最小宽度和最小高度属性，防止计算器过小导致布局问题
 
 ### v1.1.9 (2026-01-30)
 - 新增长度转换器功能

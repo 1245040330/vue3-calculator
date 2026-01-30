@@ -80,6 +80,8 @@ app.mount('#app')
 | `language` | String | `"en"` | Initial language: "en", "zh-cn" |
 | `theme` | String | `"auto"` | Initial theme: "auto", " "light", "dark" |
 | `angle-unit` | String | `"DEG"` | Initial angle unit: "DEG", "RAD", "GRAD" |
+| `height` | String | `"100%""` | Calculator height |
+| `width` | String | `"100%""` | Calculator width |
 
 ### Event Emissions
 
@@ -100,6 +102,8 @@ app.mount('#app')
       :language="'zh-cn'"
       :theme="'dark'"
       :angle-unit="'RAD'"
+      :height="'460px'"
+      :width="'320px'"
       @mode-change="handleModeChange"
       @language-change="handleLanguageChange"
       @theme-change="handleThemeChange"
@@ -110,7 +114,7 @@ app.mount('#app')
 
 <script setup>
 import { ref } from 'vue'
-import Calculator from 'vue3-calculator-ms'
+import {Calculator} from 'vue3-calculator-ms'
 import 'vue3-calculator-ms/dist/vue3-calculator-ms.css'
 import "katex/dist/katex.min.css";
 
@@ -161,6 +165,8 @@ app.use(Calculator, {
   language: 'en',
   theme: 'light',
   angleUnit: 'DEG',
+  height: '460px',
+  width: '320px',
 })
 
 app.mount('#app')
@@ -175,6 +181,11 @@ app.mount('#app')
 -  ⚙  **Settings**: Customizable calculator preferences including theme, language, and angle unit functionality
 
 ## 📝 Update log
+
+### v1.1.10 (2026-01-30)
+- New component properties: 'height', 'width'`
+- Support `import {Calculator} from 'vue3-calculator-ms'` to reference components
+- Add minimum width and minimum height attributes to the component to prevent layout issues caused by the calculator being too small
 
 ### v1.1.9 (2026-01-30)
 - Add length converter functionality

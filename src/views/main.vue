@@ -43,15 +43,14 @@ const changeShowMenu = (value) => {
 <style lang="scss" scoped>
 .main-box {
   container-type: size;
-  width: 100%;
-  height: 100%;
   padding: 4px;
   display: flex;
   flex-direction: column;
   position: relative;
   background-color: var(--bg-color);
   color: var(--text-color);
-
+  min-height: 460px;
+  min-width: 320px;
   .more-box {
     position: absolute;
     left: 0;

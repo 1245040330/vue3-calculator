@@ -1,8 +1,14 @@
 <template>
-  <Main></Main>
+  <Main :style="{height: props.height, width: props.width}"></Main>
 </template>
 <script setup>
-import { onMounted, watch } from "vue";
+import { onMounted, watch,getCurrentInstance } from "vue";
+import './style.css'
+import 'virtual:svg-icons-register';
+const instance = getCurrentInstance();
+const app = instance?.appContext.app;
+import { initDependencies } from '@/utils/initUtil'
+initDependencies(app)
 import Main from "@/views/main.vue";
 import { useColorMode } from "@vueuse/core";
 import { useI18n } from "vue-i18n";
@@ -33,6 +39,14 @@ const props = defineProps({
   initialMode: {
     type: String,
     default: undefined,
+  },
+  height:{
+    type: String,
+    default: '100%',
+  },
+  width:{
+    type: String,
+    default: '100%',
   },
 });
 
