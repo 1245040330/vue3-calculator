@@ -66,5 +66,10 @@
   ],
   "author": "fengjie",
   "description": "本计算器应用旨在模仿 Microsoft Calculator 的功能和用户体验，提供熟悉的界面，同时为基础和高级计算提供增强功能。|This calculator application is designed to mimic the functionality and user experience of Microsoft Calculator, providing a familiar interface with enhanced features for both basic and advanced calculations.",
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://github.com/1245040330/vue3-calculator#readme",
+   "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1245040330/vue3-calculator.git"
+  }
 }
