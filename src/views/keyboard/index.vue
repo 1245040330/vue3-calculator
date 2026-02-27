@@ -16,6 +16,7 @@
           :is-hover="hoverKeyboardObject[item.keyboard]"
           :is-active="activeKeyboardObject[item.key]"
           @click="handleKeyPress(item)"
+          :class="item.label === '=' ? 'equal-button' : ''"
         >
           <component
             v-if="renderComponents(item, activeKeyboardObject)"
@@ -507,7 +508,7 @@ const handleKeyPress = (key) => {
       calculationText.value = "";
       currentText.value = value;
     } else {
-      if (currentText.value.length < 16) {
+      if (currentText.value.length < 32) {
         currentText.value += value;
       }
     }
@@ -516,7 +517,6 @@ const handleKeyPress = (key) => {
     currentText.value = "0";
   }
 };
-
 </script>
 <style lang="scss" scoped>
 .keyboard-box {
@@ -537,6 +537,27 @@ const handleKeyPress = (key) => {
     justify-content: space-evenly;
     grid-column-gap: 4px;
     grid-row-gap: 4px;
+
+    /* 修复：使用 :deep() 选择器，并确保正确匹配类名 */
+    :deep(.equal-button) {
+      background: linear-gradient(135deg, #4a6cf7, #2a5298);
+      color: white;
+      box-shadow: 0 4px 15px rgba(74, 108, 247, 0.4);
+      font-weight: bold;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: linear-gradient(135deg, #5a7cf9, #3a62a8);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(74, 108, 247, 0.6);
+      }
+
+      &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 10px rgba(74, 108, 247, 0.4);
+      }
+    }
   }
 }
 </style>
