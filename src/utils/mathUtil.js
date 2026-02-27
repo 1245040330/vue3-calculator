@@ -2,7 +2,7 @@ import { create, all } from "mathjs";
 import katex from "katex";
 import { useCalculatorStore } from '@/store'
 
-const math = create(all);
+const math = create(all,{ number: 'BigNumber', precision: 64 });
 const rawNegate = math.unaryMinus;
 // 将函数注册到解析器
 math.import({
