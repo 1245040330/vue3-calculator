@@ -240,6 +240,7 @@ const handleKeyPress = (key) => {
       clear(calculationText.value, currentText.value);
     calculationText.value = newCalculationText;
     currentText.value = newCurrentText;
+    updateCurremtText.value = false;
   } else if (value == "%") {
     currentText.value = percent(currentText.value);
   } else if (value == "Reciprocal") {
@@ -290,9 +291,7 @@ const handleKeyPress = (key) => {
         updateCurremtText.value,
         false
       );
-    // 去掉括号前面的0
-    calculationText.value =
-      removeLeadingZeroBeforeParenthesis(newCalculationText);
+    calculationText.value = newCalculationText;
     currentText.value = newCurrentText;
   } else if (value == ")") {
     const { calculationText: newCalculationText, currentText: newCurrentText } =
@@ -518,12 +517,6 @@ const handleKeyPress = (key) => {
   }
 };
 
-function removeLeadingZeroBeforeParenthesis(expression) {
-  // 使用正则表达式匹配括号前的0
-  // 例如：0(3+4) -> (3+4)
-  // 注意：不要匹配数字中的0，如10(3+4) -> 10(3+4)
-  return expression.replace(/(?<!\d)0\(/g, "(");
-}
 </script>
 <style lang="scss" scoped>
 .keyboard-box {
