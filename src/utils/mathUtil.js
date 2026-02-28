@@ -249,25 +249,19 @@ export function evaluate(expression) {
 
 const formatOutput = (value) => {
     try {
-        // 检查是否为大数字或特殊类型
-        if (value && value.e && Math.abs(value.e) > 10000) {
-            // 对于非常大的数字，使用科学计数法
-            return math.format(value, {
-                notation: 'exponential',
-                precision: 10
-            });
-        }
-        
         // 正常数字格式化
         const formatted = math.format(value, {
-            notation: 'fixed',
+            // 1. 改为 'auto'，让 math.js 自动根据指数决定是否用科学计数法
+            notation: 'auto',
+            // 2. 这里的 precision 是指“保留多少位有效数字”，不是小数位
             precision: 15,
-            upperExp: 16, // 超过 10^16 才使用科学计数法
-            lowerExp: -16 // 小于 10^-16 才使用科学计数法
+            // 3. 这里的阈值应与你逻辑中的 32 保持一致
+            // 当指数 >= 32 时，显示为 1e+32
+            upperExp: 32,
+            // 当指数 <= -32 时，显示为 1e-32
+            lowerExp: -32
         });
-        
-        // 移除末尾的零和小数点
-        return formatted.replace(/\.?0+$/, "");
+        return formatted;
     } catch (error) {
         console.error('格式化错误:', error);
         return value.toString();
