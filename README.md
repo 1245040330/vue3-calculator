@@ -182,9 +182,18 @@ app.mount('#app')
 
 ## 📝 Update log
 
+### v1.1.12 (2026-02-28)
+- Fix the overflow problem of large factorial calculation
+- Adjust the font size of the input text to adapt to different screen sizes
+- Fixed the issue in scientific calculators where invalid input was displayed when the input expression contained 'i'
+- Display method using thousandth separator
+- Remove the manual processing logic for large numbers and switch to using the automatic formatting function of math.js
+- Fixed the issue where the updateCurrentText status was not updated correctly
+- Modify mathjs configuration to use BigNumber and set precision to 64 bits
+
 ### v1.1.11 (2026-01-30)
--Conversion type support preview (conversion function not yet implemented)
--Optimization of menu hierarchy distance for switching mode pages
+- Conversion type support preview (conversion function not yet implemented)
+- Optimization of menu hierarchy distance for switching mode pages
 
 ### v1.1.10 (2026-01-30)
 - New component properties: 'height', 'width'`
