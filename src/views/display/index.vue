@@ -23,6 +23,10 @@ const calculationText = computed({
 });
 
 const formatNumber = (num) => {
+  // 检查是否包含'i'
+  if (num.includes("i")) {
+    return "无效输入";
+  }
   if (num === "Error" || num === "Infinity" || num === "NaN") {
     return num;
   }
