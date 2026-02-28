@@ -23,6 +23,10 @@ const calculationText = computed({
 });
 
 const formatNumber = (num) => {
+  if (num === "Error" || num === "Infinity" || num === "NaN") {
+    return num;
+  }
+
   if (!num || typeof num !== "string") return num;
 
   // 1. 科学计数法直接返回（不加逗号）
