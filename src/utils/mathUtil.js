@@ -2,7 +2,7 @@ import { create, all } from "mathjs";
 import katex from "katex";
 import { useCalculatorStore } from '@/store'
 
-const math = create(all,{ number: 'BigNumber', precision: 64 });
+const math = create(all, { number: 'BigNumber', precision: 64 });
 const rawNegate = math.unaryMinus;
 // 将函数注册到解析器
 math.import({
@@ -13,6 +13,12 @@ math.import({
         return math.pow(x, 2);
     },
     fact: function (x) {
+        //将输入转为普通数字进行大小判断
+        const n = typeof x === 'number' ? x : math.number(x);
+        if (n > 3249) {
+            //直接返回 Infinity（无穷大）
+            return math.bignumber(Infinity);
+        }
         return math.factorial(x);
     },
     ln: function (x) {
@@ -235,13 +241,13 @@ export function evaluate(expression) {
         expression = expression.replace("=", "")
     }
     try {
-        let value =math.evaluate(expression);
+        let value = math.evaluate(expression);
         let result = formatOutput(value)
         return result + ""
     } catch (error) {
         console.error("表达式错误", expression, error);
 
-        return 'error'
+        return 'Error'
     }
 
 

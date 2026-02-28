@@ -90,23 +90,20 @@ const displayBoxRef = ref(null);
 const currentTextRef = ref(null);
 // 存储当前字体大小
 const currentFontSize = ref(80);
+// 缓存的 span 元素，用于计算文本宽度
+const spanRef = ref(null);
 
 // 计算文本宽度
-// 创建一个临时的 <span> 元素，模拟文本在 80px 字体下的宽度
+// 使用缓存的 span 元素，避免重复创建和销毁
 const getTextWidth = (text) => {
-  if (!text) return 0;
+  if (!text || !spanRef.value) return 0;
 
-  const span = document.createElement("span");
-  span.style.position = "absolute";
-  span.style.visibility = "hidden";
-  span.style.whiteSpace = "nowrap";
-  span.style.fontSize = "80px"; // 使用80px字体计算原始宽度
-  span.style.fontFamily = getComputedStyle(currentTextRef.value).fontFamily;
-  span.textContent = text;
-
-  document.body.appendChild(span);
-  const width = span.offsetWidth;
-  document.body.removeChild(span);
+  // 更新 span 内容
+  spanRef.value.textContent = text;
+  
+  // 计算宽度
+  const width = spanRef.value.offsetWidth;
+  
   return width;
 };
 
@@ -147,6 +144,17 @@ const handleResize = () => {
 };
 
 onMounted(() => {
+  // 创建并缓存 span 元素
+  if (!spanRef.value && currentTextRef.value) {
+    const span = document.createElement("span");
+    span.style.position = "absolute";
+    span.style.visibility = "hidden";
+    span.style.whiteSpace = "nowrap";
+    span.style.fontSize = "80px"; // 使用80px字体计算原始宽度
+    span.style.fontFamily = getComputedStyle(currentTextRef.value).fontFamily;
+    document.body.appendChild(span);
+    spanRef.value = span;
+  }
   window.addEventListener("resize", handleResize);
   // 初始调整字体大小
   adjustFontSize();
@@ -154,6 +162,11 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   window.removeEventListener("resize", handleResize);
+  // 清理缓存的 span 元素
+  if (spanRef.value) {
+    spanRef.value.remove();
+    spanRef.value = null;
+  }
 });
 </script>
 
