@@ -102,7 +102,7 @@ const getTextWidth = (text) => {
   spanRef.value.textContent = text;
   
   // 计算宽度
-  const width = spanRef.value.offsetWidth;
+  const width = spanRef.value.scrollWidth;
   
   return width;
 };
@@ -111,7 +111,7 @@ const getTextWidth = (text) => {
 const adjustFontSize = () => {
   if (!displayBoxRef.value || !currentTextRef.value) return;
 
-  const containerWidth = displayBoxRef.value.clientWidth;
+  const containerWidth = displayBoxRef.value.clientWidth-20;
   const text = currentText.value;
 
   // 空文本时恢复默认大小
@@ -150,6 +150,10 @@ onMounted(() => {
     span.style.position = "absolute";
     span.style.visibility = "hidden";
     span.style.whiteSpace = "nowrap";
+    span.style.top = 0;
+    span.style.overflow = "auto";
+    span.style.width = "100%"
+    span.style.zIndex = "-1";
     span.style.fontSize = "80px"; // 使用80px字体计算原始宽度
     span.style.fontFamily = getComputedStyle(currentTextRef.value).fontFamily;
     document.body.appendChild(span);
