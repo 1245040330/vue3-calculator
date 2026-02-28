@@ -235,7 +235,8 @@ export function evaluate(expression) {
         expression = expression.replace("=", "")
     }
     try {
-        let result = formatOutput(math.evaluate(expression))
+        let value =math.evaluate(expression);
+        let result = formatOutput(value)
         return result + ""
     } catch (error) {
         console.error("表达式错误", expression, error);
@@ -247,14 +248,30 @@ export function evaluate(expression) {
 }
 
 const formatOutput = (value) => {
-    // 如果是复数、矩阵等，format 也能处理
-    // precision: 14 是科学计算器的常用设定
-    return math.format(value, {
-        notation: 'fixed',
-        precision: 15,
-        upperExp: 16, // 超过 10^10 才使用科学计数法
-        lowerExp: -16 // 小于 10^-10 才使用科学计数法
-    }).replace(/\.?0+$/, "");
+    try {
+        // 检查是否为大数字或特殊类型
+        if (value && value.e && Math.abs(value.e) > 10000) {
+            // 对于非常大的数字，使用科学计数法
+            return math.format(value, {
+                notation: 'exponential',
+                precision: 10
+            });
+        }
+        
+        // 正常数字格式化
+        const formatted = math.format(value, {
+            notation: 'fixed',
+            precision: 15,
+            upperExp: 16, // 超过 10^16 才使用科学计数法
+            lowerExp: -16 // 小于 10^-16 才使用科学计数法
+        });
+        
+        // 移除末尾的零和小数点
+        return formatted.replace(/\.?0+$/, "");
+    } catch (error) {
+        console.error('格式化错误:', error);
+        return value.toString();
+    }
 };
 
 /**
