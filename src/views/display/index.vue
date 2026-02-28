@@ -14,8 +14,6 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount, watch, computed } from "vue";
 import { useCalculatorStore } from "@/store";
-import { parse as mathParse } from "mathjs";
-import katex from "katex";
 
 const calculatorStore = useCalculatorStore();
 
@@ -27,45 +25,50 @@ const calculationText = computed({
 const formatNumber = (num) => {
   if (!num || typeof num !== "string") return num;
 
-  // 处理负数
+  // 1. 科学计数法直接返回（不加逗号）
+  if (num.includes('e') || num.includes('E')) {
+    return num;
+  }
+
+  // 2. 处理负号（仅保留开头的负号）
   const isNegative = num.startsWith("-");
   let cleanNum = isNegative ? num.slice(1) : num;
 
-  // 仅保留数字字符（移除非数字字符）
-  cleanNum = cleanNum.replace(/[^0-9]/g, "");
-
-  // 计算数字位数
-  const digitCount = cleanNum.length;
-
-  // 32以上：使用准确科学计数法
-  if (digitCount > 32) {
-    const exponent = digitCount - 1;
-
-    // 保留10位有效数字（1位整数 + 9位小数）
-    const significantDigits = cleanNum.substring(0, 10);
-
-    // 提取整数部分和小数部分
-    const integerPart = significantDigits[0];
-    const fractionalPart = significantDigits.substring(1);
-
-    // 检查小数部分是否全为0
-    if (fractionalPart === "000000000") {
-      // 简化显示：1.e+31
-      return isNegative
-        ? `-${integerPart}.e+${exponent}`
-        : `${integerPart}.e+${exponent}`;
-    } else {
-      // 保留9位小数
-      return isNegative
-        ? `${integerPart}.${fractionalPart}e+${exponent}`
-        : `${integerPart}.${fractionalPart}e+${exponent}`;
+  // 3. 仅保留第一个小数点
+  let decimalCount = 0;
+  cleanNum = cleanNum.replace(/[^0-9.]/g, (char) => {
+    if (char === '.' && decimalCount === 0) {
+      decimalCount++;
+      return char;
     }
+    return '';
+  });
+
+  // 4. 清理开头/结尾的小数点
+  if (cleanNum.startsWith('.')) {
+    cleanNum = cleanNum.slice(1);
+  }
+  if (cleanNum.endsWith('.')) {
+    cleanNum = cleanNum.slice(0, -1);
   }
 
-  // 31位及以下：逗号分隔格式（每3位加逗号）
-  const formatted = cleanNum.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  // 5. 如果没有有效数字，返回空（但保留负号）
+  if (!cleanNum) {
+    return isNegative ? '-' : '';
+  }
 
-  return isNegative ? "-" + formatted : formatted;
+  // 6. 仅对整数部分添加逗号（小数部分不加）
+  const [integerPart, fractionalPart] = cleanNum.split('.');
+  
+  // 仅处理整数部分（如果存在）
+  const formattedInteger = integerPart ? integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "0";
+  
+  // 7. 组合格式化结果
+  const formatted = fractionalPart 
+    ? `${formattedInteger}.${fractionalPart}`
+    : formattedInteger;
+
+  return isNegative ? `-${formatted}` : formatted;
 };
 
 const currentText = computed({
@@ -141,21 +144,6 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   window.removeEventListener("resize", handleResize);
-});
-
-const katexHtml = computed(() => {
-  if (calculationText.value) {
-    try {
-      return katex.renderToString(mathParse("1 / 2").toTex(), {
-        throwOnError: false,
-      });
-    } catch (error) {
-      console.error(error);
-      return calculationText.value;
-    }
-  } else {
-    return "";
-  }
 });
 </script>
 
