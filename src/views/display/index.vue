@@ -26,7 +26,7 @@ const formatNumber = (num) => {
   if (!num || typeof num !== "string") return num;
 
   // 1. 科学计数法直接返回（不加逗号）
-  if (num.includes('e') || num.includes('E')) {
+  if (num.includes("e") || num.includes("E")) {
     return num;
   }
 
@@ -37,34 +37,36 @@ const formatNumber = (num) => {
   // 3. 仅保留第一个小数点
   let decimalCount = 0;
   cleanNum = cleanNum.replace(/[^0-9.]/g, (char) => {
-    if (char === '.' && decimalCount === 0) {
+    if (char === "." && decimalCount === 0) {
       decimalCount++;
       return char;
     }
-    return '';
+    return "";
   });
 
   // 4. 清理开头/结尾的小数点
-  if (cleanNum.startsWith('.')) {
+  if (cleanNum.startsWith(".")) {
     cleanNum = cleanNum.slice(1);
   }
-  if (cleanNum.endsWith('.')) {
+  if (cleanNum.endsWith(".")) {
     cleanNum = cleanNum.slice(0, -1);
   }
 
   // 5. 如果没有有效数字，返回空（但保留负号）
   if (!cleanNum) {
-    return isNegative ? '-' : '';
+    return isNegative ? "-" : "";
   }
 
   // 6. 仅对整数部分添加逗号（小数部分不加）
-  const [integerPart, fractionalPart] = cleanNum.split('.');
-  
+  const [integerPart, fractionalPart] = cleanNum.split(".");
+
   // 仅处理整数部分（如果存在）
-  const formattedInteger = integerPart ? integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "0";
-  
+  const formattedInteger = integerPart
+    ? integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    : "0";
+
   // 7. 组合格式化结果
-  const formatted = fractionalPart 
+  const formatted = fractionalPart
     ? `${formattedInteger}.${fractionalPart}`
     : formattedInteger;
 
@@ -163,6 +165,7 @@ onBeforeUnmount(() => {
 
   .current-text {
     text-align: right;
+    white-space: nowrap; /* 阻止换行 */
   }
 }
 </style>
